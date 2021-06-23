@@ -1,3 +1,15 @@
 # gorman-earlyjobskill-analysis
-Classifying early job skills
-- first change
+Data Studio Project - June / July 2021
+
+- Q: What is the relationship between early life job skills and later life labor market outcomes? 
+
+# Folders 
+- code: Code documentation 
+- data: Contains raw NLSY79 files, not uploaded on github. 
+- doc: Data documentation 
+- out: Shareable output 
+    - Exploratory 
+    - Final 
+- draft: Draft of written piece  
+
+# Workflow
