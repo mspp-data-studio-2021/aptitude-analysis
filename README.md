@@ -1,4 +1,4 @@
-# gorman-earlyjobskill-analysis
+# gorman-earlyjobskills-analysis
 Data Studio Project - June / July 2021
 
 - Q: What is the relationship between early life job skills and later life labor market outcomes? 
