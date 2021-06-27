@@ -14,7 +14,3 @@ Data Studio Project - June / July 2021
 
 # Workflow
 - set up local virtual environment 
-    pip3 install virtualenv
-    virtualenv env
-    python -m virtualenv .
-    .\scripts\activate
