@@ -5,7 +5,7 @@ Data Studio Project - June / July 2021
 
 # Folders 
 - code: Code documentation 
-- data: Contains raw NLSY79 files, not uploaded on github. 
+- data: Contains raw NLSY79 files (uploaded on github temporarily). 
 - doc: Data documentation 
 - out: Shareable output 
     - Exploratory 
