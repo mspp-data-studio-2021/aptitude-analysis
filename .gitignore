@@ -42,3 +42,7 @@ Scripts/wheel-3.9.exe
 Scripts/wheel.exe
 Scripts/wheel3.9.exe
 Scripts/wheel3.exe
+.ipynb_checkpoints/
+code/.ipynb_checkpoints/
+code/.ipynb_checkpoints/01. Rename Variables-checkpoint.ipynb
+Lib/site-packages/__pycache__/_virtualenv.cpython-39.pyc
