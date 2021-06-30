@@ -3,3 +3,9 @@ numpy
 ipykernel
 jupyterlab
 csv
+os 
+glob
+matplotlib.pyplot
+seaborn.apionly
+matplotlib.ticker 
+MaxNLocator
