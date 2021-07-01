@@ -16,5 +16,6 @@ Data Studio Project - June / July 2021
 - set up local virtual environment 
 - process data 
 
-# Attributions 
+
+### Attributions 
 https://github.com/HumanCapitalAnalysis/nlsy-data
