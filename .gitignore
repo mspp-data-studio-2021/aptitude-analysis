@@ -21,5 +21,5 @@ data/input/original.dat
 data/input/GNPDEF.csv
 data/input/extract.log
 data/input/continuous_week_crosswalk_2012.xlsx
-data/input/TNFI_TRUNC_79.csv
 data/output/original.pkl
+code/fig-emp-status-1978.png

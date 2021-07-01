@@ -6,6 +6,8 @@ csv
 os 
 glob
 matplotlib.pyplot
+seaborn
 seaborn.apionly
 matplotlib.ticker 
 MaxNLocator
+
