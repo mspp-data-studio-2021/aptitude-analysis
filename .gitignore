@@ -8,3 +8,23 @@ code/.ipynb_checkpoints/
 code/.ipynb_checkpoints/01. Rename Variables-checkpoint.ipynb
 Lib/site-packages/__pycache__/_virtualenv.cpython-39.pyc
 code/.ipynb_checkpoints/01. Rename Variables-checkpoint.ipynb
+.vscode/launch.json
+.vscode/Process Data.py
+data/input/continuous_week_crosswalk_2012.pkl
+data/input/continuous_week_crosswalk_2012.xlsx
+data/input/GNPDEF.csv
+data/input/original-new.csv
+data/input/extract.log
+data/input/original-new.xlsx
+data/input/original-value-labels.do
+data/input/original.cdb
+data/input/original.csv
+data/input/original.dat
+data/input/original.dct
+data/input/original.NLSY79
+data/input/original.sas
+data/input/original.sdf
+data/input/original.sps
+data/input/original.txt
+data/input/TNFI_TRUNC_79.csv
+data/output/original.pkl
