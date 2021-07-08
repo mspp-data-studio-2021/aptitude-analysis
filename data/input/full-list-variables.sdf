@@ -30,7 +30,7 @@ R01536.00  1979    ROTTER SCALE 79 INT - PAIR FOUR, STATEMENT A                 
 R01537.10  1979    ROTTER SCALE SCORE                                                        ROTTER_SCORE
 R01547.00  1979    TOTAL INCOME FROM MILITARY SERVICE IN PAST CALENDAR YEAR                  Q13-3
 R01736.00  1979    SAMPLE IDENTIFICATION CODE                                                SAMPLE_ID
-R02147.00  78SCRN  R'S RACIAL/ETHNIC COHORT FROM SCREENER                                    SAMPLE_RACE
+R02147.00  1979    RACIAL/ETHNIC COHORT FROM SCREENER                                        SAMPLE_RACE
 R02148.00  1979    SEX OF R                                                                  SAMPLE_SEX
 R02166.01  1979    ENROLLMENT STATUS AS OF MAY 1 SURVEY YEAR (REVISED)                       ENROLLMTREV79
 R02167.01  1979    HIGHEST GRADE COMPLETED AS OF MAY 1 SURVEY YEAR (REVISED)                 HGCREV79
