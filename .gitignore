@@ -23,7 +23,6 @@ data/input/extract.log
 data/input/continuous_week_crosswalk_2012.xlsx
 data/output/original.pkl
 code/fig-emp-status-1978.png
-code/01. Process Data-Copy1.ipynb
 data/input/additional-vars-1.sdf
 data/input/continuous_week_crosswalk_2019.xlsx
 data/input/full-list-variables.dct
