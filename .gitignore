@@ -27,3 +27,6 @@ data/input/additional-vars-1.sdf
 data/input/continuous_week_crosswalk_2019.xlsx
 data/input/full-list-variables.dct
 data/output/full-list-variables.pkl
+code/01. Process Data.ipynb
+
+
