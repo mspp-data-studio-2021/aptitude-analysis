@@ -391,6 +391,7 @@ def _get_counts_year(series, bins, year):
 
     return counts
 
+# Create final data 
 # %%
 if __name__ == '__main__':
 
@@ -405,4 +406,3 @@ if __name__ == '__main__':
 
     source_obj.load(fname)
     source_obj.testing()
-# %%
