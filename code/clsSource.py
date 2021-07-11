@@ -1,17 +1,18 @@
+# %%
 import pandas as pd
 import numpy as np
 
-from code.special_treatments import aggregate_school_enrollment_monthly
-from code.special_treatments import aggregate_highest_degree_received
-from code.special_treatments import cleaning_highest_grade_attended
-from code.special_treatments import standarize_employer_information
-from code.special_treatments import aggregate_birth_information
-from code.special_treatments import calculate_afqt_scores
-from code.special_treatments import create_is_interviewed
+from special_treatments import cleaning_highest_grade_attended
+from special_treatments import standarize_employer_information
+from special_treatments import aggregate_birth_information
+from special_treatments import calculate_afqt_scores
+from special_treatments import create_is_interviewed
+from special_treatments import aggregate_highest_degree_received
 
-from code.dct_mappings import get_mappings
-# We maintain this list to contain all variables that are processed for the panel. This is checked
-# in the testing method.
+from dct_mappings import get_mappings
+
+# %%
+# This list contains all variables that are processed for the panel; checked via testing.
 TIME_CONSTANT = []
 TIME_CONSTANT += ['IDENTIFIER', 'RACE', 'GENDER']
 TIME_CONSTANT += ['ASVAB_ARITHMETIC_REASONING', 'ASVAB_WORD_KNOWLEDGE', 'ASVAB_ALTERED_TESTING']
@@ -27,6 +28,8 @@ TIME_VARYING += ['ENROLLMENT_STATUS', 'YEAR_OF_BIRTH', 'CPSOCC70']
 TIME_VARYING += ['MONTH_OF_BIRTH', 'HIGHEST_GRADE_COMPLETED', 'SURVEY_YEAR']
 TIME_VARYING += ['INCOME_MILITARY', 'REASON_NONINTERVIEW', 'HIGHEST_GRADE_ATTENDED']
 TIME_VARYING += ['HIGHEST_DEGREE_RECEIVED_1', 'HIGHEST_DEGREE_RECEIVED_2']
+TIME_VARYING += ['INCOME_WAGES_SALARY', 'POVSTATUS', 'AMT_WORK_LMT']
+TIME_VARYING += ['TYPE_WORK_LMT','HEALTH_INS', 'MAR_STATUS', 'REGION']
 
 for start in ['EMP_HOURS_WK_', 'EMP_STATUS_WK_']:
     for week in ['1', '7', '13', '14', '20', '26', '40', '46', '52']:
@@ -43,6 +46,7 @@ for month in months:
     for idx in ['1', '2']:
         TIME_VARYING += ['ENROLLED_SCHOOL_' + month + '_' + idx]
 
+# %%
 # These variables are created during processing. These are part of this separate list as they are
 # not available when the data is transformed from wide to long format.
 DERIVED_VARS = []
@@ -55,7 +59,7 @@ for start in ['OCCALL70_MOD_JOB_']:
 for month in months:
     DERIVED_VARS += ['ENROLLED_SCHOOL_' + month]
 
-
+# %%
 class SourceCls(object):
     """ This class contains all methods that prepare the source dataset for further uses.
     """
@@ -71,7 +75,7 @@ class SourceCls(object):
         """ Read the original file from the NLSY INVESTIGATOR.
         """
         # Read from original data from CSV file
-        self.source_wide = pd.read_csv('input/original.csv', nrows=num_agents)
+        self.source_wide = pd.read_csv('data/input/all-variables-july.csv', nrows=num_agents)
 
         # Process variable dictionary
         survey_years, dct = get_mappings()
@@ -81,7 +85,7 @@ class SourceCls(object):
         self.dct = dct
 
     def add_basic_variables(self):
-        """ We add some basic variables that are easily constructed from the original information
+        """ Add some basic variables that are constructed from the original information
         and frequently used during finer processing of the data.
         """
         # Distribute class attributes
@@ -97,7 +101,6 @@ class SourceCls(object):
         for varname in ['MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']:
             source_long[varname] = source_long[varname].astype('int64')
 
-        source_long = aggregate_school_enrollment_monthly(source_long)
         source_long = aggregate_highest_degree_received(source_long)
         source_long = cleaning_highest_grade_attended(source_long)
         source_long = standarize_employer_information(source_long)
@@ -159,20 +162,20 @@ class SourceCls(object):
             np.testing.assert_equal((source_long[varname].notnull().groupby(
                 level='Identifier').std() == 0).all(), True)
 
-        # We know the distribution of race from the NLSY website.
+        # The distribution of race is known from the NLSY website.
         values = source_long['RACE'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([7510, 3174, 2002], values)
     
-        # We know the distribution of gender from the NLSY website
+        # The distribution of gender is known from the NLSY website.
         values = source_long['GENDER'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([6403, 6283], values)
 
-        # We know the distribution of the sample identifiers from the NLSY website.
+        # The distribution of the sample identifiers is known from the NLSY website.
         values = source_long['SAMPLE_ID'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([2279, 2236, 1105, 1067, 901, 751, 742, 729, 609, 405,
                                         346, 342, 226, 218, 203, 198, 162, 89, 53, 25], values)
 
-        # We know a bit about the AFQT_1 variable from the codebook.
+        # A bit is known about the AFQT_1 variable from the codebook.
         stat = source_long['AFQT_1'].groupby(level='Identifier').first().isnull().sum()
         np.testing.assert_equal(stat, 808)
         stat = (source_long['AFQT_1'].min(), source_long['AFQT_1'].max())
@@ -184,12 +187,12 @@ class SourceCls(object):
         values = source_long.groupby(level='Identifier').first()['ASVAB_ALTERED_TESTING'].value_counts().values
         np.testing.assert_equal([11625, 127, 85, 41, 36], values)
 
-        # We know that CPSOCC70 is used to impute OCCALL70_MOD_JOB_1 in 1979 and 1993.
+        # The variable CPSOCC70 is used to impute OCCALL70_MOD_JOB_1 in 1979 and 1993.
         for year in [1979, 1993]:
             cond = source_long['CPSOCC70'][:, year].equals(source_long['OCCALL70_MOD_JOB_1'][:, year])
             np.testing.assert_equal(cond, True)
 
-        ''' We now check the distribution of selected variables at random.
+        ''' Check the distribution of selected variables at random.
         '''
         # HIGHEST_DEGREE_RECEIVED
         cases = []
@@ -309,7 +312,7 @@ class SourceCls(object):
         # Distribute class attributes
         self.source_long = pd.read_pickle(fname)
 
-
+# %%
 def wide_to_long(source_wide, additional_level, dct):
     """ The original data is set up in the wide format. However, we want to work with a typical
     panel structure.
@@ -320,29 +323,28 @@ def wide_to_long(source_wide, additional_level, dct):
     multi_index = pd.MultiIndex.from_product([caseid, additional_level], names=['Identifier', 'Survey Year'])
     pd_long = pd.DataFrame(index=multi_index)
 
-    # For housekeeping purposes it is useful to have a column that corresponds to each of the two
-    #  indices.
+    # It is useful to have a column that corresponds to each of the two indices.
     pd_long['IDENTIFIER'] = pd_long.index.get_level_values('Identifier')
     pd_long['SURVEY_YEAR'] = pd_long.index.get_level_values('Survey Year')
 
     for long_name in dct.keys():
-        # We initialize the column with missing values.
+        # Initialize the column with missing values.
         pd_long[long_name] = np.nan
         for year in additional_level:
             # Some variables might not be defined for each year. If that is the case,
             # missing values simply remain.
             if year not in dct[long_name].keys():
                 continue
-            # Now we can simply assign the variable name to the corresponding year.
+            # Now simply assign the variable name to the corresponding year.
             pd_long.loc[(slice(None), year), long_name] = source_wide[dct[long_name][year]].values
 
-    # For some variables we do not have any missing values and so we can impose an integer type.
+    # Some variables do not have any missing values, so integer type can be imposed.
     for varname in ['IDENTIFIER', 'SURVEY_YEAR', 'RACE', 'GENDER']:
         pd_long[varname] = pd_long[varname].astype('int64')
 
     return pd_long
 
-
+# %%
 def cpsocc_counts(year, source_long):
     """ This function returns counts for each of the bins of the variable.
     """
@@ -413,3 +415,19 @@ def _get_counts_year(series, bins, year):
         counts += [series.loc[:, year].between(lower, upper).sum()]
 
     return counts
+
+# %%
+if __name__ == '__main__':
+
+    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/full-list-variables.pkl'
+
+    source_obj = SourceCls()
+
+    source_obj.read_source()
+    source_obj.transform_wide_to_panel()
+    source_obj.add_basic_variables()
+    source_obj.store(fname)
+
+    source_obj.load(fname)
+    source_obj.testing()
+# %%

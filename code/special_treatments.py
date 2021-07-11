@@ -1,10 +1,11 @@
+#%%
 """ This module contains some functionality for some special treatment that is required for a
 selected few variables.
 """
 from numpy.testing import assert_equal
 import numpy as np
 
-
+# %%
 def aggregate_highest_degree_received(df):
     """ This function merges the information about the highest degree ever received,
      sometimes collected under two variable names but never with conflicting information.
@@ -140,15 +141,13 @@ def calculate_afqt_scores(df):
     #          85   54      COMP-SPANISH INSTR. CARDS
     #          36   67      COMP-PRODECURES ALTERED
     #
-    # We followed up with the NLSY staff to get some guidance on how to deal with 51, 52, 53,
-    # 54. The correspondence is available in ``correspondence-altered-testing.pdf'' in the sources
-    # subdirectory. In a nutshell, not detailed information is available anymore on the meaning
-    # of the different realizations. We decided to follow the original decision of the NLSY staff
-    # to only set 67 to NAN.
+    # NLSY staff guidance on how to deal with 51, 52, 53, and 54 essentially was that detailed information
+    # is not available anymore on the meaning of the different realizations. This code chooses to follow the
+    # original decision of the NLSY staff to only set 67 to NAN.
     cond = df['ASVAB_ALTERED_TESTING'].isin([67])
     df.loc[cond, 'AFQT_RAW'] = np.nan
 
-    # We have a little unit test, where we reconstruct the AFQT_1 variable from the inputs.
+    # Unit test; reconstruct the AFQT_1 variable from the inputs.
     assert_equal(_test_afqt(df), True)
 
     return df
@@ -202,10 +201,10 @@ def _test_afqt(df):
     """ NLSY provides percentile information for AFQT scores, reconstructed here 
     as a check based on NLSY instructions.
     """
-    # As we break the logic of the code a bit, we work only with copies of the object here.
+    # Breaking the logic of the code a bit, here, copies of the object are drawn from.
     df_internal = df.copy(deep=True)
 
-    # We need to adjust for missing values right here, even though this is done later in the code
+    # Adjust for missing values right here, even though this is done later in the code
     # for all variables.
     for label in ['AFQT_RAW', 'AFQT_1']:
         cond = (df_internal[label] < 0)
@@ -251,4 +250,3 @@ def _test_afqt(df):
         df_internal.loc[cond, 'AFQT_PERCENTILES'] = value
 
     return df_internal['AFQT_PERCENTILES'].equals(df_internal['AFQT_1'])
-

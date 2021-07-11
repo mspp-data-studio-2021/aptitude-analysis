@@ -37,3 +37,16 @@ code/data/input/continuous_week_crosswalk_2019-DESKTOP-OOQRFTJ.csv
 code/data/input/continuous_week_crosswalk_2019.xlsx
 code/data/input/continuous_week_crosswalk2019.csv
 code/data/input/continuous_week_crosswalk_2019.csv
+code/analysis.txt
+code/auxiliary.py
+code/__pycache__/clsSource.cpython-38.pyc
+code/__pycache__/dct_mappings.cpython-38.pyc
+code/__pycache__/special_treatments.cpython-38.pyc
+code/analysis.py
+code/error-msg.txt
+code/workspace.code-workspace
+code/exploratory.py
+code/create_data.py
+data/full-list-variables.pkl
+data/input/all-variables-clean.sdf
+data/input/all-variables-july.csv

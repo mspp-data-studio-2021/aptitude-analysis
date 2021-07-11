@@ -20,7 +20,7 @@ from pathlib import Path
 # %%
 proj_dir = Path(os.path.abspath(""))
 print(proj_dir)
-os.chdir(r'c:\Users\bec10\OneDrive\Desktop\files\repos\gorman-earlyjobskills-analysis')
+os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis')
 print(proj_dir)
 
 # %%
@@ -54,7 +54,7 @@ def get_name(substrings):
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+    with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -79,7 +79,7 @@ def get_year_name(substrings):
         substrings = [substrings]
 
     container = dict()
-    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+    with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -290,7 +290,7 @@ def process_single_each_year():
     '''
     # HOURLY RATE OF PAY JOB ##
     for i in range(1, 6):
-        substrings = 'HOURLY RATE OF PAY JOB #0' + str(i)
+        substrings = ['HOURLY RATE OF PAY JOB #0' + str(i)]
         dct['WAGE_HOURLY_JOB_' + str(i)] = get_year_name(substrings)
 
     # TOTAL INCOME FROM MILITARY SERVICE
@@ -302,7 +302,7 @@ def process_single_each_year():
     dct['INCOME_WAGES_SALARY'] = get_year_name(substrings)
     
     #POVERTY STATUS 
-    substrings = 'FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR'
+    substrings = 'FAMILY POVERTY STATUS IN PRIOR YEAR'
     dct['POVSTATUS'] = get_year_name(substrings)
     
     
@@ -340,15 +340,15 @@ def process_single_each_year():
 
 
 # %%
-# This function processes information on the highest degree ever received. There are
-# two different variables in some years with the same information.
 def process_highest_degree_received():
-
+    '''This function processes information on the highest degree ever received. There are
+    two different variables in some years with the same information.
+    '''
     # This method reads in the variable names for the highest grade received.
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+        with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
@@ -381,15 +381,15 @@ def process_highest_degree_received():
 
 
 # %%
-# This function processes the monthly school enrollment data. This is surprisingly
-# difficult as, for example, information about March 1990 is asked in the 1990 and 1991 surveys.
 def process_school_enrollment_monthly():
-
+    '''This function processes the monthly school enrollment data. This is surprisingly
+    difficult as, for example, information about March 1990 is asked in the 1990 and 1991 surveys.
+    '''
     # Search for the information in the short description file.  
     def read_school_enrollment_monthly():
 
         rslt = dict()
-        with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+        with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'MONTHS ENROLLED IN SCHOOL SINCE LAST INT' in line
                 is_relevant = np.all(is_relevant)
