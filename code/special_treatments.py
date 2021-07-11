@@ -32,38 +32,6 @@ def cleaning_highest_grade_attended(df):
 
     return df
 
-
-def aggregate_school_enrollment_monthly(df):
-    """ This function merges the information about monthly school enrollment. It is sometimes
-    collected twice due the differing time an individual is interviewed that year.
-    """
-    months = []
-    months += ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST']
-    months += ['SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
-
-    for month in months:
-        label = 'ENROLLED_SCHOOL_' + month
-        df[label] = np.nan
-
-        # This assignment rule simply takes the first assignment and only uses the second if
-        # that results in a missing value.
-        df[label] = df['ENROLLED_SCHOOL_' + month + '_1']
-
-        cond = df[label].isnull()
-        df.loc[cond, label] = df['ENROLLED_SCHOOL_' + month + '_2']
-
-        # It also appears that sometimes the indicator that an individual was attending school that
-        # month takes values different from one. However, SELECTED is always positive and NOT
-        # SELECTED is always zero.
-        cond = df[label] == 0
-        df.loc[cond, label] = 0
-
-        cond = df[label] > 0
-        df.loc[cond, label] = 1
-
-    return df
-
-
 def create_is_interviewed(df):
     """This function creates an indicator that evaluates to TRUE if an individual
     was interviewed that year based on the information about the reasons for non-interviews. 

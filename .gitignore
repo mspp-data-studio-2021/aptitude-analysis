@@ -50,3 +50,5 @@ code/create_data.py
 data/full-list-variables.pkl
 data/input/all-variables-clean.sdf
 data/input/all-variables-july.csv
+code/error.xlsx
+code/~$error.xlsx

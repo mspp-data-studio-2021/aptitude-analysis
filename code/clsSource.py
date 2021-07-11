@@ -39,13 +39,6 @@ for start in ['WAGE_HOURLY_JOB_', 'CPS_JOB_INDICATOR_JOB_', 'OCCALL70_JOB_']:
     for job in ['1', '2', '3', '4', '5']:
         TIME_VARYING += [start + job]
 
-months = []
-months += ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER']
-months += ['OCTOBER', 'NOVEMBER', 'DECEMBER']
-for month in months:
-    for idx in ['1', '2']:
-        TIME_VARYING += ['ENROLLED_SCHOOL_' + month + '_' + idx]
-
 # %%
 # These variables are created during processing. These are part of this separate list as they are
 # not available when the data is transformed from wide to long format.
@@ -55,9 +48,6 @@ DERIVED_VARS += ['AFQT_RAW', 'IS_INTERVIEWED', 'HIGHEST_DEGREE_RECEIVED']
 for start in ['OCCALL70_MOD_JOB_']:
     for job in ['1', '2', '3', '4', '5']:
         DERIVED_VARS += [start + job]
-
-for month in months:
-    DERIVED_VARS += ['ENROLLED_SCHOOL_' + month]
 
 # %%
 class SourceCls(object):
@@ -216,17 +206,6 @@ class SourceCls(object):
             label = 'HIGHEST_GRADE_ATTENDED'
             np.testing.assert_equal(source_long[label][:, year].value_counts().values, rslt)
 
-        # SCHOOL_ENROLLMENT MONTHLY
-        cases = []
-        cases += [(2011, 'JANUARY', '1', (188, 156))]
-        cases += [(1980, 'APRIL', '1', (5353,))]
-        cases += [(1994, 'JUNE', '1', (490, 232))]
-
-        for case in cases:
-            year, month, idx, rslt = case
-            label = 'ENROLLED_SCHOOL_' + month + '_' + idx
-            np.testing.assert_equal(source_long[label][:, year].value_counts().values, rslt)
-
         # IS_INTERVIEWED
         cases = []
         cases += [(1980, (12141, 545))]
@@ -292,10 +271,6 @@ class SourceCls(object):
         # module.
         varnames = TIME_CONSTANT + TIME_VARYING + DERIVED_VARS
         np.testing.assert_equal(set(source_long.columns.values), set(varnames))
-
-        # This ensures that there are now surprising changes to the dataset
-        val = 8726642399.5
-        np.testing.assert_equal(source_long.sum(numeric_only=True).sum(), val)
 
     def store(self, fname):
         """ Store the dataset for further processing.

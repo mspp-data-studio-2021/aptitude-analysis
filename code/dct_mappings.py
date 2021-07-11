@@ -18,10 +18,10 @@ from pathlib import Path
 
 
 # %%
+os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis')
 proj_dir = Path(os.path.abspath(""))
 print(proj_dir)
-os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis')
-print(proj_dir)
+
 
 # %%
 def get_mappings():
@@ -40,11 +40,10 @@ def get_mappings():
     dct_full.update(process_multiple_each_year())
     dct_full.update(process_single_each_year())
     dct_full.update(process_highest_degree_received())
-    dct_full.update(process_school_enrollment_monthly())
+    
 
     # Finishing
     return years, dct_full
-
 
 # %%
 def get_name(substrings):
@@ -338,7 +337,6 @@ def process_single_each_year():
 
     return dct
 
-
 # %%
 def process_highest_degree_received():
     '''This function processes information on the highest degree ever received. There are
@@ -376,101 +374,5 @@ def process_highest_degree_received():
             if label not in dct.keys():
                 dct[label] = dict()
             dct[label][year] = val
-
-    return dct
-
-
-# %%
-def process_school_enrollment_monthly():
-    '''This function processes the monthly school enrollment data. This is surprisingly
-    difficult as, for example, information about March 1990 is asked in the 1990 and 1991 surveys.
-    '''
-    # Search for the information in the short description file.  
-    def read_school_enrollment_monthly():
-
-        rslt = dict()
-        with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
-            for line in infile.readlines():
-                is_relevant = 'MONTHS ENROLLED IN SCHOOL SINCE LAST INT' in line
-                is_relevant = np.all(is_relevant)
-
-                if not is_relevant:
-                    continue
-
-                list_ = shlex.split(line)
-
-                # Collect information
-                variable, month = list_[0].replace('.', ''), list_[10]
-
-                if 'R09052.00' in line:
-                    month, year = list_[12], int(list_[13])
-               
-                # There are some typos in the variable descriptions
-                elif 'INT-' in line:
-                    month, year = list_[9], int(list_[10])
-                else:
-                    year = int(list_[11])
-
-                # The labeling convention for year is all over the place. For example 2012
-                # shows up as 12 as well.
-                if 0 <= year < 25:
-                    year += 2000
-                elif 70 < year < 100:
-                    year += 1900
-                else:
-                    pass
-
-                # The labeling convention for the month is also inconsistent.
-                if 'JAN' in month:
-                    month = 'JANUARY'
-                elif 'FEB' in month:
-                    month = 'FEBRUARY'
-                elif 'MAR' in month:
-                    month = 'MARCH'
-                elif 'APR' in month:
-                    month = 'APRIL'
-                elif 'MAY' in month:
-                    month = 'MAY'
-                elif 'JUN' in month:
-                    month = 'JUNE'
-                elif 'JUL' in month:
-                    month = 'JULY'
-                elif 'AUG' in month:
-                    month = 'AUGUST'
-                elif 'SEP' in month:
-                    month = 'SEPTEMBER'
-                elif 'OCT' in month:
-                    month = 'OCTOBER'
-                elif 'NOV' in month:
-                    month = 'NOVEMBER'
-                elif 'DEC' in month:
-                    month = 'DECEMBER'
-                else:
-                    raise AssertionError
-
-                if year not in rslt.keys():
-                    rslt[year] = dict()
-                if month not in rslt[year].keys():
-                    rslt[year][month] = []
-
-                rslt[year][month] += [variable]
-
-        return rslt
-
-    rslt = read_school_enrollment_monthly()
-    dct = dict()
-    for year in rslt.keys():
-        for month in rslt[year].keys():
-            for val in rslt[year][month]:
-                label = 'ENROLLED_SCHOOL_' + month + '_1'
-
-                if label in dct.keys():
-                    if year in dct[label].keys():
-                        label = 'ENROLLED_SCHOOL_' + month + '_2'
-
-                if label not in dct.keys():
-                    dct[label] = dict()
-
-                dct[label][year] = val
 
     return dct
