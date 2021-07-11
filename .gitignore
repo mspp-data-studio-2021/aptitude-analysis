@@ -30,3 +30,10 @@ data/output/full-list-variables.pkl
 code/01. Process Data.ipynb
 
 
+code/create-pkl.py
+code/data/input/additional-vars-1.sdf
+code/data/input/continous_week_crosswalk2019.pkl
+code/data/input/continuous_week_crosswalk_2019-DESKTOP-OOQRFTJ.csv
+code/data/input/continuous_week_crosswalk_2019.xlsx
+code/data/input/continuous_week_crosswalk2019.csv
+code/data/input/continuous_week_crosswalk_2019.csv
