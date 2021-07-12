@@ -1,5 +1,5 @@
 # aptitude-analysis
-Author: Carolyn D. Gorman  |  Data Studio Project  |  June / July 2021
+Author: Carolyn D. Gorman  | NYU Robert F. Wagner Graduate School of Public Service  |  June / July 2021
 
 ## Project Summary 
 Question: What is the relationship between early life aptitude and later life labor market outcomes?
