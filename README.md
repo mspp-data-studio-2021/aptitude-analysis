@@ -14,7 +14,7 @@ The NLSY79 is a nationally representative sample of 12,686 young men and women b
 - data: Contains raw NLSY79 files (uploaded on github temporarily). 
 - doc: Data documentation 
 - out: Shareable output 
-- draft: Draft of written piece  
+- draft: Draft of presentation and written piece  
 
 ## How to Reproduce This Analysis
 - Get the data and files by cloning the git repository
