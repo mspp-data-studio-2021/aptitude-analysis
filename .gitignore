@@ -27,7 +27,10 @@ data/input/additional-vars-1.sdf
 data/input/continuous_week_crosswalk_2019.xlsx
 data/input/full-list-variables.dct
 data/output/full-list-variables.pkl
-code/01. Process Data.ipynb
+code/"01. Process Data.ipynb"
+code/"02. Dataset & Summary Statistics.ipynb"
+code/continous_week_crosswalk2019.csv
+code/process-data_debug.py 
 
 
 code/create-pkl.py
