@@ -3,15 +3,13 @@ Author: Carolyn D. Gorman  |  Data Studio Project  |  June / July 2021
 
 - Q: What is the relationship between early life aptitude and later life labor market outcomes?
 
-Using data from the National Longitudinal Survey of Youth 1979 (NLSY79), I examine how indicators of aptitude, self-esteem, and sense of control during respondents' early adulthood translate into later life labor market outcomes such as employment status, income and wages, occupation, and having employer-provided health insurance coverage.
+Using data from the National Longitudinal Survey of Youth 1979 (NLSY79), I examine how indicators of aptitude, self-esteem, and sense of control during respondents' early adulthood are related to later life labor market outcomes such as income and wages, occupation, and having employer-provided health insurance coverage.
 
 # Folders 
 - code: Code documentation 
 - data: Contains raw NLSY79 files (uploaded on github temporarily). 
 - doc: Data documentation 
 - out: Shareable output 
-    - Exploratory 
-    - Final 
 - draft: Draft of written piece  
 
 # Workflow
