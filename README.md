@@ -18,9 +18,10 @@ Using data from the National Longitudinal Survey of Youth 1979 (NLSY79), I exami
 # Workflow
 - Set up local virtual environment 
 - Files found in folder "code" can be run in the order that follows to replicate: 
-    (1) dct_mapping
-    (2) special_treatments
-    (3) clsSource
+    *(1) dct_mapping
+    *(2) special_treatments
+    *(3) clsSource
+    *(4) setup_plots
 
 
 ### Attributions 
