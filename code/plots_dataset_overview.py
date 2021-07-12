@@ -90,6 +90,6 @@ ax = plt.figure().add_subplot(111)
 
 dat = df.loc[df['SURVEY_YEAR'] == 1978, 'SAMPLE'].astype('category')
 
-labels = ['Cross-sectional', 'Supplementary', 'Military']
+labels = ['Non-institutionalized Civilian Population', 'Supplemental Sample Hispanic, Black, Economically Disadvantaged', 'Military']
 ax.pie(dat.value_counts(normalize=True), labels=labels, autopct='%1.1f%%')
 plt.savefig('fig-dataset-basic-samples.png')

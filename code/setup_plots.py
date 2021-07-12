@@ -14,7 +14,7 @@ os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-ana
 
 # %%
 # Read in the dataset
-fname = 'data/full-list-variables.pkl'
+fname = 'data/all-variables.pkl'
 # Read in data for total net family income 
 fname2 = 'data/input/TNFI_TRUNC_79.csv'
 if not os.path.exists(fname):
