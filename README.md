@@ -29,6 +29,8 @@ The NLSY79 is a nationally representative sample of 12,686 young men and women b
     - (5) plots_dataset_overview (*includes plots for summary statistics*)
     - (6) plots_aptitude_measures (*includes basic plots for aptitude measures*)
 
+
+
 ### Attributions 
 I draw base code from https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned version of the National Longitudinal Survey of Youth 1979 (NLSY79). Much of the code--particularly for structuring the dataset--should be credited to the above linked contributors: Luis Wardenbach, Philipp Eisenhauer, Sebastian Becker, and @bekauf.
 https://github.com/HumanCapitalAnalysis/nlsy-data
