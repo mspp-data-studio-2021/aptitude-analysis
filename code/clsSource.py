@@ -65,7 +65,7 @@ class SourceCls(object):
         """ Read the original file from the NLSY INVESTIGATOR.
         """
         # Read from original data from CSV file
-        self.source_wide = pd.read_csv('data/input/all-variables-july.csv', nrows=num_agents)
+        self.source_wide = pd.read_csv('data/input/all-variables.csv', nrows=num_agents)
 
         # Process variable dictionary
         survey_years, dct = get_mappings()
@@ -395,7 +395,7 @@ def _get_counts_year(series, bins, year):
 # %%
 if __name__ == '__main__':
 
-    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/full-list-variables.pkl'
+    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.pkl'
 
     source_obj = SourceCls()
 

@@ -53,7 +53,7 @@ def get_name(substrings):
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
+    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -78,7 +78,7 @@ def get_year_name(substrings):
         substrings = [substrings]
 
     container = dict()
-    with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
+    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -300,7 +300,7 @@ def process_single_each_year():
     substrings = 'TOTAL INCOME FROM WAGES AND SALARY'
     dct['INCOME_WAGES_SALARY'] = get_year_name(substrings)
     
-    #POVERTY STATUS 
+    # POVERTY STATUS 
     substrings = 'FAMILY POVERTY STATUS IN PRIOR YEAR'
     dct['POVSTATUS'] = get_year_name(substrings)
     
@@ -346,7 +346,7 @@ def process_highest_degree_received():
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(proj_dir / 'data/input/all-variables-clean.sdf', 'r') as infile:
+        with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
