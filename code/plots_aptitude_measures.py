@@ -17,11 +17,18 @@ os.getcwd()
 # %%
 # Pull in the data
 df = get_dataset()
+df 
 
 # %%
-df.shape
-df.head()
 df.columns
+
+# %%
+df['AGE'].describe()
+
+# %%
+df['AGE'].isin([18])
+df
+
 # %%
 
 cond = df['AGE'].isin([18])

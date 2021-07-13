@@ -40,6 +40,11 @@ def get_dataset():
     
     # Construct family income quartile variable
     trunc_data = OBS_DATASET.loc[OBS_DATASET['SURVEY_YEAR'] == 1978, ['TNFI_TRUNC']].dropna()
+
+    trunc_data.replace(-3, np.nan)
+    trunc_data.replace(-2, np.nan)
+    trunc_data.replace(-1, np.nan)
+    
     first_q = np.percentile(trunc_data, 25)
     second_q = np.percentile(trunc_data, 50)
     third_q = np.percentile(trunc_data, 75)
@@ -59,3 +64,4 @@ def get_dataset():
     OBS_DATASET['FAMILY_INCOME_QUARTILE'] = OBS_DATASET['TNFI_TRUNC'].apply(func)
 
     return OBS_DATASET
+# %%
