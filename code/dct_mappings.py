@@ -7,8 +7,7 @@ from IPython import get_ipython
 # %% [markdown]
 # ### In this notebook, the data from the NLSY79 are cleaned and processed for further analysis.
 # %% [markdown]
-# I draw code for this notebook from https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned version of the National Longitudinal Survey of Youth 1979 (NLSY79). A majority of the code below should be credited to the above linked contributors: Luis Wardenbach, Philipp Eisenhauer, Sebastian Becker, and @bekauf. 
-
+# I draw code for this notebook from https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned version of the National Longitudinal Survey of Youth 1979 (NLSY79). 
 # %%
 import os
 import pandas as pd
@@ -198,8 +197,7 @@ def process_multiple_each_year():
     """
     dct_multiple = dict()
 
-    # The mapping between the continuous weeks counter and the calendar year is provided on the
-    # NLSY website.
+    # Mapping between continuous weeks and the calendar year is provided on the NLSY website.
     mapping_continuous_week = pd.read_pickle(proj_dir / 'data/input/continuous_week_crosswalk_2012.pkl')
     years = mapping_continuous_week['Week Start: \nYear'].unique()
 

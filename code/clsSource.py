@@ -84,10 +84,10 @@ class SourceCls(object):
         # The processing of birth information is not as straightforward as one might think.
         source_long = aggregate_birth_information(source_long)
 
-        # We compute the AFQT score as suggested in the data documentation.
+        # Compute the AFQT score as suggested in the data documentation.
         source_long = calculate_afqt_scores(source_long)
 
-        # There are no missing values for all these variables, so we can enforce integer type.
+        # There are no missing values for all these variables, so integer type can be enforced.
         for varname in ['MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']:
             source_long[varname] = source_long[varname].astype('int64')
 
@@ -128,7 +128,7 @@ class SourceCls(object):
         # Distribute class attributes
         source_long = self.source_long
 
-        # There are several variables where we cannot have a missing value.
+        # There are several variables which cannot have a missing value.
         varnames = []
         varnames += ['IDENTIFIER', 'RACE', 'GENDER', 'MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']
         varnames += ['SURVEY_YEAR']
@@ -140,8 +140,7 @@ class SourceCls(object):
         subset = source_long.drop(9269, level='Identifier')
         np.testing.assert_equal(subset.filter(regex='EMP_STATUS_*').notnull().all().all(), True)
 
-        # For all EMP_HOURS_ variables at least we know that the non-missing values need to be
-        # positive.
+        # For all EMP_HOURS_ variables, non-missing values need to be positive
         assert source_long.filter(regex='EMP_HOURS_*').apply(lambda column: (column[column.notnull()] >= 0).all()).all()
     
         # There are several variables which are not supposed to vary over time.
@@ -267,8 +266,7 @@ class SourceCls(object):
             args, rslt = case
             np.testing.assert_almost_equal(rslt, wage_hourly_counts(*args))
 
-        # We want to make sure that all included variables are mentioned at the beginning of the
-        # module.
+        # Confirm all included variables are mentioned at the beginning of the module.
         varnames = TIME_CONSTANT + TIME_VARYING + DERIVED_VARS
         np.testing.assert_equal(set(source_long.columns.values), set(varnames))
 
@@ -289,8 +287,7 @@ class SourceCls(object):
 
 # %%
 def wide_to_long(source_wide, additional_level, dct):
-    """ The original data is set up in the wide format. However, we want to work with a typical
-    panel structure.
+    """ The original data is set up in wide format, not a typical panel structure.
     """
     # Set up an empty dataframe with the right index structure. This setup maintains the mapping
     # between the index in the dataframe and the NLSY identifier.
@@ -331,7 +328,7 @@ def cpsocc_counts(year, source_long):
 
     return counts
 
-
+# %%
 def occall_counts(year, num, source_long):
     """ This function returns counts for each of the bins of the variable.
     """
@@ -343,7 +340,7 @@ def occall_counts(year, num, source_long):
 
     return counts
 
-
+# %%
 def wage_hourly_counts(year, num, source_long):
     """ This function returns counts for each of the bins of the variable.
     """
@@ -355,7 +352,7 @@ def wage_hourly_counts(year, num, source_long):
 
     return counts
 
-
+# %%
 def emp_hours_counts(year, week, source_long):
     """ This function returns counts for each of the bins of the variable.
     """
@@ -369,7 +366,7 @@ def emp_hours_counts(year, week, source_long):
 
     return counts
 
-
+# %%
 def emp_status_counts(year, week, source_long):
     """ This function returns counts for each of the bins of the variable.
     """
@@ -380,7 +377,7 @@ def emp_status_counts(year, week, source_long):
 
     return counts
 
-
+# %%
 def _get_counts_year(series, bins, year):
     """ This function gets the counts within each bin of a particular year.
     """

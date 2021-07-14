@@ -1,5 +1,5 @@
 #%%
-""" This module contains some functionality for some special treatment that is required for a
+""" This module contains some functionality for special treatment that is required for a
 selected few variables.
 """
 from numpy.testing import assert_equal
@@ -22,7 +22,7 @@ def aggregate_highest_degree_received(df):
 
     return df
 
-
+# %%
 def cleaning_highest_grade_attended(df):
     """ The variable for highest grade attended contains a value 95 
     which corresponds to UNGRADED.
@@ -32,6 +32,7 @@ def cleaning_highest_grade_attended(df):
 
     return df
 
+# %%
 def create_is_interviewed(df):
     """This function creates an indicator that evaluates to TRUE if an individual
     was interviewed that year based on the information about the reasons for non-interviews. 
@@ -43,7 +44,7 @@ def create_is_interviewed(df):
 
     return df
 
-
+# %%
 def standarize_employer_information(df):
     """ This function merges the employer-specific information on an individual's occupation
     using the 70 CPS codes into a new variable. See additional information at:
@@ -71,7 +72,7 @@ def standarize_employer_information(df):
 
     return df
 
-
+# %%
 def calculate_afqt_scores(df):
     """This function calculates the Aptitude, Achievement, and Intelligence (AFQT) scores, 
     with the Numerical Operations score adjusted along the lines described in NLS Attachment 106. 
@@ -120,7 +121,7 @@ def calculate_afqt_scores(df):
 
     return df
 
-
+# %%
 def aggregate_birth_information(df):
     """ This function aggregates the birth information that was collected in 1979 and 1981. See
     information at
@@ -164,7 +165,7 @@ def aggregate_birth_information(df):
 
     return df
 
-
+# %%
 def _test_afqt(df):
     """ NLSY provides percentile information for AFQT scores, reconstructed here 
     as a check based on NLSY instructions.

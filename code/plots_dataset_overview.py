@@ -101,55 +101,62 @@ plt.savefig('fig3-dataset-basic-samples.png')
 # %%
 # Plot income quartiles 
 first_quartile = df.loc[df['FAMILY_INCOME_QUARTILE'] == 'first quartile', 'TNFI_TRUNC'].sum()
-first_quartile
-
-# %%
-first_quartile_test = df.loc[df['FAMILY_INCOME_QUARTILE'] == 'first quartile'].mean()
-first_quartile_test 
-# %%
 second_quartile = df.loc[df['FAMILY_INCOME_QUARTILE'] == 'second quartile', 'TNFI_TRUNC'].sum()
 third_quartile = df.loc[df['FAMILY_INCOME_QUARTILE'] == 'third quartile', 'TNFI_TRUNC'].sum()
 fourth_quartile = df.loc[df['FAMILY_INCOME_QUARTILE'] == 'fourth quartile', 'TNFI_TRUNC'].sum()
 
 dat = [first_quartile, second_quartile, third_quartile, fourth_quartile]
+labels = ['First quartile', 'Second quartile', 'Third quartile', 'Fourth quartile']
 ax = plt.figure().add_subplot(111)
-ax.bar(dat, labels=['First quartile', 'Second quartile', 'Third quartile',
-                    'Fourth quartile'], autopct='%1.1f%%')
-
-# plt.savefig('fig-dataset-basic-income-quartile.png')
-
-# %%
-dat = df.loc[df['SURVEY_YEAR'] == 1978, 'TNFI_TRUNC']
-dat = dat.value_counts().to_dict()
-
-N_points = 12686
-n_bins = 5
-
-ax = plt.figure().add_subplot(111)
-set_formatter(ax)
-
-ax[0].hist(dat.keys(), 
-ax[1].hist(dat.values(), )
-
-fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
-
-# We can set the number of bins with the `bins` kwarg
-axs[0].hist(x, bins=n_bins)
-axs[1].hist(y, bins=n_bins)
-
-
-# %%
-ax = plt.figure().add_subplot(111)
-set_formatter(ax)
+ax.bar(labels, dat)
 
 csfont = {'fontname':'Times New Roman'}
 
-ax.set_ylabel('Number of Respondents', **csfont)
-ax.set_xlabel('Income Quintile', **csfont)
-ax.set_title('Figure 4. Respondents\' family income quartile, NLSY79 (1978)', **csfont)
-ax.hist(dat.keys(), dat.values())
+ax.set_xlabel('Total unadjusted dollars', **csfont)
+ax.set_xticks(labels)
+ax.set_xticklabels(dat)
+ax.set_title('Figure 4. Income quartiles, NLSY79 (1978)', **csfont)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+plt.savefig('fig3-dataset-basic-inc-quartiles.png')
 
-# plt.savefig('fig1-dataset-basic-birth.png')
+
+
+
+
+
+# # %%
+# dat = df.loc[df['SURVEY_YEAR'] == 1978, 'TNFI_TRUNC']
+# dat = dat.value_counts().to_dict()
+
+# N_points = 12686
+# n_bins = 5
+
+# ax = plt.figure().add_subplot(111)
+# set_formatter(ax)
+
+# ax[0].hist(dat.keys(), 
+# ax[1].hist(dat.values(), )
+
+# fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
+
+# # We can set the number of bins with the `bins` kwarg
+# axs[0].hist(x, bins=n_bins)
+# axs[1].hist(y, bins=n_bins)
+
+
+# # %%
+# ax = plt.figure().add_subplot(111)
+# set_formatter(ax)
+
+# csfont = {'fontname':'Times New Roman'}
+
+# ax.set_ylabel('Number of Respondents', **csfont)
+# ax.set_xlabel('Income Quintile', **csfont)
+# ax.set_title('Figure 4. Respondents\' family income quartile, NLSY79 (1978)', **csfont)
+# ax.hist(dat.keys(), dat.values())
+
+# # plt.savefig('fig1-dataset-basic-birth.png')
 
 
 
