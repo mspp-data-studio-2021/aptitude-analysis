@@ -24,12 +24,6 @@ df = get_dataset()
 df.columns 
 
 # %%
-df['GENDER'].unique()
-
-# %%
-df['RACE'].unique()
-
-# %%
 # Check the values of the variable age 
 # The oldest age that all respondents have data for in the dataset is 47
 # The youngest age that all respondents have data for in the dataset is 22
@@ -111,3 +105,42 @@ for parent in ['AFQT', 'ROSENBERG', 'ROTTER']:
     plt.savefig('fig-apt-att-47' + parent.lower() + '.png')
 
 
+# %%
+# Examine the relationship for later age
+df = get_dataset()
+df['GENDER'] = df['GENDER']==False
+df
+# %%
+cond = df['AGE'].isin([47])
+df = df[cond]
+
+# Plot the relationships in heatmaps 
+for parent in ['AFQT', 'ROSENBERG', 'ROTTER']:
+    ax = plt.figure().add_subplot(111)
+
+    if parent in ['AFQT']:
+        label = 'AFQT_1'
+        ylabel = 'AFQT'
+    else:
+        label = parent + '_SCORE'
+        ylabel = parent.lower().capitalize()
+
+    x = pd.qcut(df[label], 4, labels=False, duplicates="drop")
+    y = pd.qcut(df['WAGE_HOURLY_JOB_1'], 4, labels=False, duplicates="drop")
+
+    tab = pd.crosstab(y, x, normalize=True)
+    tab = round(tab,2)
+    hm = sns.heatmap(tab, cmap="Blues", vmin=0, vmax=0.15, annot=True)
+    hm.invert_yaxis()
+
+    csfont = {'fontname':'Times New Roman'}
+    ax.set_yticks(np.linspace(0.5, 3.5, 4))
+    ax.set_yticklabels(range(1, 5))
+    ax.set_ylabel('Hourly Wages (quartiles)')
+
+
+    ax.set_xticks(np.linspace(0.5, 3.5, 4))
+    ax.set_xticklabels(range(1, 5))
+    ax.set_xlabel(ylabel + ' Scores (quartiles)', **csfont)
+    
+    plt.savefig('fig-apt-att-47' + parent.lower() + '.png')
