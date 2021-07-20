@@ -1,23 +1,21 @@
-"""This notebook creates the dataset for further use.
-"""
+# %%
+"""This module creates a class object for the data."""
 
 # %%
 import pandas as pd
 import numpy as np
-import os
 
-from special_treatments import cleaning_highest_grade_attended
-from special_treatments import standarize_employer_information
-from special_treatments import aggregate_birth_information
-from special_treatments import calculate_afqt_scores
-from special_treatments import create_is_interviewed
-from special_treatments import aggregate_highest_degree_received
+from setup_dct import get_mappings
+from setup_dct import cleaning_highest_grade_attended
+from setup_dct import aggregate_highest_degree_received
 
-from dct_mappings import get_mappings
-from dct_mappings import project_dir 
+from setup_additional_vars import standarize_employer_information
+from setup_additional_vars import aggregate_birth_information
+from setup_additional_vars import calculate_afqt_scores
+from setup_additional_vars import create_is_interviewed
 
 # %%
-# This list contains all variables that are processed for the panel; checked via testing.
+# This list contains all variables that are processed for the panel, checked via testing.
 TIME_CONSTANT = []
 TIME_CONSTANT += ['IDENTIFIER', 'RACE', 'GENDER']
 TIME_CONSTANT += ['ASVAB_ARITHMETIC_REASONING', 'ASVAB_WORD_KNOWLEDGE', 'ASVAB_ALTERED_TESTING']
@@ -44,7 +42,7 @@ for start in ['WAGE_HOURLY_JOB_', 'CPS_JOB_INDICATOR_JOB_', 'OCCALL70_JOB_']:
         TIME_VARYING += [start + job]
 
 # %%
-# These variables are created during processing. These are part of this separate list as they are
+# These variables are created during processing and are part of a separate list, as they're
 # not available when the data is transformed from wide to long format.
 DERIVED_VARS = []
 DERIVED_VARS += ['AFQT_RAW', 'IS_INTERVIEWED', 'HIGHEST_DEGREE_RECEIVED']
@@ -69,7 +67,7 @@ class SourceCls(object):
         """ Read the original file from the NLSY INVESTIGATOR.
         """
         # Read from original data from CSV file
-        self.source_wide = pd.read_csv(project_dir / 'data/all-variables.csv', nrows=num_agents)
+        self.source_wide = pd.read_csv(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.csv', nrows=num_agents)
 
         # Process variable dictionary
         survey_years, dct = get_mappings()
@@ -79,19 +77,18 @@ class SourceCls(object):
         self.dct = dct
 
     def add_basic_variables(self):
-        """ Add some basic variables that are constructed from the original information
-        and frequently used during finer processing of the data.
+        """ Add some basic variables that are constructed from the original information.
         """
         # Distribute class attributes
         source_long = self.source_long
 
-        # The processing of birth information is not as straightforward as one might think.
+        # Process birth information
         source_long = aggregate_birth_information(source_long)
 
-        # Compute the AFQT score as suggested in the data documentation.
+        # Compute the AFQT score 
         source_long = calculate_afqt_scores(source_long)
 
-        # There are no missing values for all these variables, so integer type can be enforced.
+        # There are no missing values for these variables, so integer type can be enforced.
         for varname in ['MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']:
             source_long[varname] = source_long[varname].astype('int64')
 
@@ -110,12 +107,12 @@ class SourceCls(object):
         source_wide = self.source_wide
         dct = self.dct
 
-        # Change from the original wide format to the typical panel structure
+        # Change from the original wide format to a typical panel structure
         self.source_long = wide_to_long(source_wide, survey_years, dct)
         self._set_missing_values()
 
     def _set_missing_values(self):
-        """ This method ensures a uniform setup for the treatment of missing values.
+        """ This method ensures a uniform treatment of missing values.
         """
         # Distribute class attributes
         source_long = self.source_long
@@ -132,15 +129,15 @@ class SourceCls(object):
         # Distribute class attributes
         source_long = self.source_long
 
-        # There are several variables which cannot have a missing value.
+        # There are several variables which can't have a missing value.
         varnames = []
         varnames += ['IDENTIFIER', 'RACE', 'GENDER', 'MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']
         varnames += ['SURVEY_YEAR']
         for varname in varnames:
             np.testing.assert_equal(source_long[varname].notnull().all(), True)
     
-        # The same is true for the all EMP_STATUS_ variables. In R26.1 there is one individual
-        # which in fact does have missing values in their employment status.
+        # The same is true for the all EMP_STATUS_ variables. There is one individual
+        # whom does in fact have missing values in their employment status; drop them.
         subset = source_long.drop(9269, level='Identifier')
         np.testing.assert_equal(subset.filter(regex='EMP_STATUS_*').notnull().all().all(), True)
 
@@ -155,15 +152,15 @@ class SourceCls(object):
             np.testing.assert_equal((source_long[varname].notnull().groupby(
                 level='Identifier').std() == 0).all(), True)
 
-        # The distribution of race is known from the NLSY website.
+        # Racial distribution is given on the NLSY website.
         values = source_long['RACE'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([7510, 3174, 2002], values)
     
-        # The distribution of gender is known from the NLSY website.
+        # Gender distribution is given on the NLSY website.
         values = source_long['GENDER'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([6403, 6283], values)
 
-        # The distribution of the sample identifiers is known from the NLSY website.
+        # Sample ID distribution is given on the NLSY website.
         values = source_long['SAMPLE_ID'].loc[:, 1979].value_counts().values
         np.testing.assert_almost_equal([2279, 2236, 1105, 1067, 901, 751, 742, 729, 609, 405,
                                         346, 342, 226, 218, 203, 198, 162, 89, 53, 25], values)
@@ -288,18 +285,19 @@ class SourceCls(object):
         """
         # Distribute class attributes
         self.source_long = pd.read_pickle(fname)
+        
+
 
 # %%
 def wide_to_long(source_wide, additional_level, dct):
-    """ The original data is set up in wide format, not a typical panel structure.
+    """ Set up an empty dataframe in the wide-to-long format with the right index structure. This
+    maintains the mapping between the index in the datafrmae in the NLSY respondent ID.
     """
-    # Set up an empty dataframe with the right index structure. This setup maintains the mapping
-    # between the index in the dataframe and the NLSY identifier.
     caseid = [x + 1 for x in source_wide.index]
     multi_index = pd.MultiIndex.from_product([caseid, additional_level], names=['Identifier', 'Survey Year'])
     pd_long = pd.DataFrame(index=multi_index)
 
-    # It is useful to have a column that corresponds to each of the two indices.
+    # It's useful to have a column that corresponds to each of the two indices.
     pd_long['IDENTIFIER'] = pd_long.index.get_level_values('Identifier')
     pd_long['SURVEY_YEAR'] = pd_long.index.get_level_values('Survey Year')
 
@@ -307,11 +305,10 @@ def wide_to_long(source_wide, additional_level, dct):
         # Initialize the column with missing values.
         pd_long[long_name] = np.nan
         for year in additional_level:
-            # Some variables might not be defined for each year. If that is the case,
-            # missing values simply remain.
+            # For variables not be defined for each year, missing values remain.
             if year not in dct[long_name].keys():
                 continue
-            # Now simply assign the variable name to the corresponding year.
+            # Assign the variable name to the corresponding year.
             pd_long.loc[(slice(None), year), long_name] = source_wide[dct[long_name][year]].values
 
     # Some variables do not have any missing values, so integer type can be imposed.
@@ -322,7 +319,7 @@ def wide_to_long(source_wide, additional_level, dct):
 
 # %%
 def cpsocc_counts(year, source_long):
-    """ This function returns counts for each of the bins of the variable.
+    """ This function returns counts for each of the bins of the variable CPSOCC70.
     """
     bins = []
     bins += [(1, 195), (201, 245), (260, 285), (301, 395), (401, 575), (580, 590)]
@@ -334,7 +331,7 @@ def cpsocc_counts(year, source_long):
 
 # %%
 def occall_counts(year, num, source_long):
-    """ This function returns counts for each of the bins of the variable.
+    """ This function returns counts for each of the bins of the variable OCCALL70_.
     """
     bins = []
     bins += [(1, 195), (201, 245), (260, 285), (301, 395), (401, 575), (580, 590), (601, 715)]
@@ -358,7 +355,7 @@ def wage_hourly_counts(year, num, source_long):
 
 # %%
 def emp_hours_counts(year, week, source_long):
-    """ This function returns counts for each of the bins of the variable.
+    """ This function returns counts for each of the bins of the variable EMP_HOURS.
     """
     bins = []
     bins += [(0, 0), (1, 9), (10, 19), (20, 29), (30, 39), (40, 49), (50, 59), (60, 69)]
@@ -372,7 +369,7 @@ def emp_hours_counts(year, week, source_long):
 
 # %%
 def emp_status_counts(year, week, source_long):
-    """ This function returns counts for each of the bins of the variable.
+    """ This function returns counts for each of the bins of the variable EMP_STATUS.
     """
     bins = []
     bins += [(100, np.inf), (0, 0), (2, 2), (3, 3), (4, 4), (5, 5), (7, 7)]
@@ -392,11 +389,12 @@ def _get_counts_year(series, bins, year):
 
     return counts
 
-#
+
 # %%
+# Save the object as a pkl file for further analysis
 if __name__ == '__main__':
 
-    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.pkl'
+    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-vars.pkl'
 
     source_obj = SourceCls()
 
@@ -408,3 +406,5 @@ if __name__ == '__main__':
     source_obj.load(fname)
     source_obj.testing()
 
+
+# %%

@@ -1,7 +1,9 @@
+# %%
+## Set-up Dictionary
 """This module processes the Short Description File downloaded along with the raw data
-from the NLS Investigator to get the yearly variable names. Variables are named with a
-reference number that is non-descriptive of the variable and different for the same 
-variable (survey question) in different years. I draw code for this module from 
+from the NLS Investigator to get yearly variable (survey question) names. Variables are 
+named with a reference number that is non-descriptive of the variable and is different 
+for the same variable in different years. I draw code for this module from 
 https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned 
 version of the NLSY79.
 """
@@ -14,11 +16,11 @@ import pandas as pd
 import numpy as np
 import shlex
 from pathlib import Path
-from IPython import get_ipython
+from numpy.testing import assert_equal
 
 
 # %% 
-# Set path 
+# Set directory path 
 code_folder = Path(os.path.abspath(''))
 print(code_folder)
 project_dir = os.path.dirname(code_folder)
@@ -28,7 +30,7 @@ print(project_dir)
 
 # %%
 def get_mappings():
-    """Process a mapping of separate cases: for variables that vary by year, and 
+    """Map variables by separate cases: for variables that vary by year, and 
     for variables where there are multiple realizations each year. 
     """
     # Set up grid for survey years. Start with 1978 as information about 1978 
@@ -51,13 +53,12 @@ def get_mappings():
 
 # %%
 def get_name(substrings):
-    """Search through the variable descriptions in NLSY file by substrings. 
+    """Search through the variable descriptions in NLSY sdf file by substrings. 
     """
-    # Allow passing in a string or list of strings from the variable descriptions.
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(project_dir / 'data/all-variables.sdf', 'r') as infile:
+    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -75,14 +76,13 @@ def get_name(substrings):
 
 # %%
 def get_year_name(substrings):
-    """Search through the variable descriptions in NLSY file by substrings. 
+    """Search through the variable descriptions in NLSY sdf file by substrings. 
     """
-    # Allow passing in a string or list of strings from the variable descriptions.
     if type(substrings) == str:
         substrings = [substrings]
 
     container = dict()
-    with open(project_dir /'data/all-variables.sdf', 'r') as infile:
+    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -131,10 +131,6 @@ def process_time_constant(years):
     for year in years:
         dct_constant['HIGHEST_GRADE_COMPLETED_MOTHER'][year] = get_name(substrings)
 
-    dct_constant['TNFI_79'] = dict()
-    substrings = 'TNFI_TRUNC'
-    for year in years:
-        dct_constant['TNFI_79']
         
     '''ATTITUDE / APTITUDE SCORES 
     '''    
@@ -201,13 +197,13 @@ def process_time_constant(years):
 
 # %%
 def process_multiple_each_year():
-    """Process variables with multiple each year--
+    """Process variables with multiple realizations each year--
     specifically, employment status for multiple weeks.
     """
     dct_multiple = dict()
 
-    # Mapping between continuous weeks and the calendar year is provided on the NLSY website.
-    mapping_continuous_week = pd.read_pickle(project_dir / 'data/continuous_week_crosswalk_2012.pkl')
+    # A mapping between continuous weeks and the calendar year is provided on the NLSY website.
+    mapping_continuous_week = pd.read_pickle('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/continuous_week_crosswalk_2012.pkl')
     years = mapping_continuous_week['Week Start: \nYear'].unique()
 
     # Prepare container
@@ -275,7 +271,7 @@ def process_single_each_year():
         substrings = ['OCCUPATION (CENSUS 3 DIGIT, 70 CODES)', 'JOB #0' + str(i)]
         dct['OCCALL70_JOB_' + str(i)] = get_year_name(substrings)
 
-    # In the year 1993, the substring is changed for some reason and cannot be easily
+    # In the year 1993, the substring is changed and cannot be easily be
     # distinguished from the CPSOCC70 variable.
     for i in range(2, 6):
         substrings = 'OCCUPATION (CENSUS 3 DIGIT) JOB #0' + str(i)
@@ -308,7 +304,7 @@ def process_single_each_year():
 
     '''HEALTH VARIABLES 
     '''
-    substrings = 'DOES HEALTH LIMIT KIND OF WORK R CAN DO?'
+    substrings = 'DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?'
     dct['AMT_WORK_LMT'] = get_year_name(substrings)
     
     substrings = 'DOES HEALTH LIMIT KIND OF WORK R CAN DO?'
@@ -346,7 +342,7 @@ def process_highest_degree_received():
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(project_dir / 'data/all-variables.sdf', 'r') as infile:
+        with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
@@ -377,4 +373,29 @@ def process_highest_degree_received():
 
     return dct
 
+
 # %%
+def aggregate_highest_degree_received(df):
+    """ This function merges the information about the highest degree ever received.
+    """
+    label = 'HIGHEST_DEGREE_RECEIVED'
+
+    # This assignment rule simply takes the first assignment and then tries to replace it with
+    # the second if the first is a missing value.
+    df[label] = df['HIGHEST_DEGREE_RECEIVED_1']
+
+    cond = df[label].isnull()
+    df.loc[cond, label] = df['HIGHEST_DEGREE_RECEIVED_2']
+
+    return df
+
+
+# %%
+def cleaning_highest_grade_attended(df):
+    """ The variable for highest grade attended contains a value 95 
+    which corresponds to UNGRADED.
+    """
+    cond = df['HIGHEST_GRADE_ATTENDED'] == 95
+    df.loc[cond, 'HIGHEST_GRADE_ATTENDED'] = np.nan
+
+    return df

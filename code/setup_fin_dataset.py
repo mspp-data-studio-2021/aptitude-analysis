@@ -1,5 +1,5 @@
-"""This module contains some auxiliary functions shared across the figures and analyses.
-First, read in the dataset and incorporate total net family income."""
+"""This module adds Total Net Family Income (TNFI) in 1979 to create income quartiles 
+used in plots and analysis."""
 # %%
 # Import necessary packages
 import os
@@ -17,7 +17,7 @@ print(project_dir)
 
 # %%
 # Read in the dataset
-fname = 'data/all-variables.pkl'
+fname = 'data/all-vars.pkl'
 # Read in data for total net family income 
 fname2 = 'data/TNFI_TRUNC_79.csv'
 if not os.path.exists(fname):

@@ -1,35 +1,10 @@
-""" This module contains some special treatments required for seclect variables.
+# %%
+""" This module creates or modifies some variables for analysis.
 """
 # %%
-from numpy.testing import assert_equal
 import numpy as np
+from numpy.testing import assert_equal
 
-# %%
-def aggregate_highest_degree_received(df):
-    """ This function merges the information about the highest degree ever received,
-     sometimes collected under two variable names but never with conflicting information.
-     At least one of the two variables is always a missing value.
-    """
-    label = 'HIGHEST_DEGREE_RECEIVED'
-
-    # This assignment rule simply takes the first assignment and then tries to replace it with
-    # the second if the first is a missing value.
-    df[label] = df['HIGHEST_DEGREE_RECEIVED_1']
-
-    cond = df[label].isnull()
-    df.loc[cond, label] = df['HIGHEST_DEGREE_RECEIVED_2']
-
-    return df
-
-# %%
-def cleaning_highest_grade_attended(df):
-    """ The variable for highest grade attended contains a value 95 
-    which corresponds to UNGRADED.
-    """
-    cond = df['HIGHEST_GRADE_ATTENDED'] == 95
-    df.loc[cond, 'HIGHEST_GRADE_ATTENDED'] = np.nan
-
-    return df
 
 # %%
 def create_is_interviewed(df):
@@ -46,8 +21,8 @@ def create_is_interviewed(df):
 # %%
 def standarize_employer_information(df):
     """ This function merges the employer-specific information on an individual's occupation
-    using the 70 CPS codes into a new variable. See additional information at:
-        https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/employment/jobs-employers
+    into a new variable using the CPS70 codes. See additional information at:
+    https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/employment/jobs-employers
     """
     # Create a set of new variables to signal to users that a modification took place.
     for i in range(1, 6):
@@ -74,7 +49,7 @@ def standarize_employer_information(df):
 # %%
 def calculate_afqt_scores(df):
     """This function calculates the Aptitude, Achievement, and Intelligence (AFQT) scores, 
-    with the Numerical Operations score adjusted along the lines described in NLS Attachment 106. 
+    with the Numerical Operations score adjusted along the lines described in NLSY Attachment 106. 
     For more details, see information at: 
     https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/education/aptitude-achievement-intelligence-scores
     """
@@ -96,7 +71,7 @@ def calculate_afqt_scores(df):
 
     del df['NUMERICAL_ADJ']
 
-    # There are a couple of variables for which AFQT_RAW can be computed whhere there is no AFQT_1
+    # There are a couple of variables for which AFQT_RAW can be computed where there is no AFQT_1
     # available. The variable AFQT_1 is set to NAN by the NLSY team if the test procedure was
     # altered, i.e. if variable R06148 (ASVAB_ALTERED_TESTING) takes value 67. However, others have
     # noticed that there are additional issues/considerations as well.
@@ -126,7 +101,7 @@ def aggregate_birth_information(df):
     https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/age for more details
     """
     def _construct_birth_info(agent):
-        """ This method constructs the correct birth variable for each agent.
+        """ This method constructs the correct birth variable for each respondent.
         """
         # Store the original information for now for debugging and testing purposes.
         for substring in ['YEAR_OF_BIRTH', 'MONTH_OF_BIRTH']:
@@ -135,7 +110,7 @@ def aggregate_birth_information(df):
             # Start with a clean slate and always prefer the information from 1981
             agent[substring] = np.nan
             agent[substring] = agent[substring + '_1981']
-            # If no information in 1981 is available we fall back to 1979.
+            # If no information in 1981 is available, fall back to 1979.
             if agent[substring].isnull().values.any():
                 agent[substring] = agent[substring + '_1979']
 
@@ -167,10 +142,10 @@ def _test_afqt(df):
     """ NLSY provides percentile information for AFQT scores, reconstructed here 
     as a check based on NLSY instructions.
     """
-    # Breaking the logic of the code a bit, here, copies of the object are drawn from.
+    # Breaking the logic of the code a bit, copies of the object are drawn from here.
     df_internal = df.copy(deep=True)
 
-    # Adjust for missing values right here, even though this is done later in the code
+    # Adjust for missing values here, even though this is also done later in the code
     # for all variables.
     for label in ['AFQT_RAW', 'AFQT_1']:
         cond = (df_internal[label] < 0)
