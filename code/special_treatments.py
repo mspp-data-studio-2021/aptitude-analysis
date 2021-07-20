@@ -1,7 +1,6 @@
-#%%
-""" This module contains some functionality for special treatment that is required for a
-selected few variables.
+""" This module contains some special treatments required for seclect variables.
 """
+# %%
 from numpy.testing import assert_equal
 import numpy as np
 
@@ -34,8 +33,8 @@ def cleaning_highest_grade_attended(df):
 
 # %%
 def create_is_interviewed(df):
-    """This function creates an indicator that evaluates to TRUE if an individual
-    was interviewed that year based on the information about the reasons for non-interviews. 
+    """This function creates an indicator evaluated TRUE if an individual was interviewed
+    that year based on the information about the reasons for non-interviews. 
     """
     df['IS_INTERVIEWED'] = df['REASON_NONINTERVIEW'].fillna(0) == 0
 
@@ -64,8 +63,8 @@ def standarize_employer_information(df):
     #
     # NOTE: There are two open questions that are ignored here: (1) There exist two variables in
     # 1990 that read ``INT CHECK - IS JOB #01 SAME AS CURRENT JOB?'' (R3340000, R3342400). The
-    # realizations of both variables are not identical. (2) There exist a few individuals where
-    # the CPSOCC indicator takes value one for more than one of the 5 OCCALL70 variables. 
+    # realizations of both variables are not identical. (2) There are a few individuals where
+    # the CPSOCC indicator takes a value of one for more than one of the 5 OCCALL70 variables. 
     for i in range(1, 6):
         cond = (df['CPS_JOB_INDICATOR_JOB_' + str(i)] == 1)
         df.loc[cond, 'OCCALL70_MOD_JOB_' + str(i)] = df.loc[cond, 'CPSOCC70']
@@ -97,10 +96,10 @@ def calculate_afqt_scores(df):
 
     del df['NUMERICAL_ADJ']
 
-    # There are a couple of variables for which we can compute AFQT_RAW while there is no AFQT_1
+    # There are a couple of variables for which AFQT_RAW can be computed whhere there is no AFQT_1
     # available. The variable AFQT_1 is set to NAN by the NLSY team if the test procedure was
-    # altered, i.e. variable R06148 (ASVAB_ALTERED_TESTING) takes value 67. However, others have
-    # noticed that there are additional indicators of problems as well.
+    # altered, i.e. if variable R06148 (ASVAB_ALTERED_TESTING) takes value 67. However, others have
+    # noticed that there are additional issues/considerations as well.
     #
     #   PROFILES, ASVAB VOCATIONAL TEST - NORMAL/ALTERED TESTING
     #
@@ -110,9 +109,9 @@ def calculate_afqt_scores(df):
     #          85   54      COMP-SPANISH INSTR. CARDS
     #          36   67      COMP-PRODECURES ALTERED
     #
-    # NLSY staff guidance on how to deal with 51, 52, 53, and 54 essentially was that detailed information
-    # is not available anymore on the meaning of the different realizations. This code chooses to follow the
-    # original decision of the NLSY staff to only set 67 to NAN.
+    # NLSY staff, on guidance for how to deal with 51, 52, 53, and 54, essentially stated that detailed 
+    # information is not available anymore on the meaning of the different realizations. 
+    # This code chooses to follow the original decision of the NLSY staff to only set 67 to NAN.
     cond = df['ASVAB_ALTERED_TESTING'].isin([67])
     df.loc[cond, 'AFQT_RAW'] = np.nan
 
@@ -124,9 +123,7 @@ def calculate_afqt_scores(df):
 # %%
 def aggregate_birth_information(df):
     """ This function aggregates the birth information that was collected in 1979 and 1981. See
-    information at
-        https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/age for
-    more details.
+    https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/age for more details
     """
     def _construct_birth_info(agent):
         """ This method constructs the correct birth variable for each agent.

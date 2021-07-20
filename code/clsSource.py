@@ -1,6 +1,10 @@
+"""This notebook creates the dataset for further use.
+"""
+
 # %%
 import pandas as pd
 import numpy as np
+import os
 
 from special_treatments import cleaning_highest_grade_attended
 from special_treatments import standarize_employer_information
@@ -10,6 +14,7 @@ from special_treatments import create_is_interviewed
 from special_treatments import aggregate_highest_degree_received
 
 from dct_mappings import get_mappings
+from dct_mappings import project_dir 
 
 # %%
 # This list contains all variables that are processed for the panel; checked via testing.
@@ -24,12 +29,11 @@ TIME_CONSTANT += ['ROSENBERG_8', 'ROSENBERG_9', 'ROSENBERG_10']
 TIME_CONSTANT += ['HIGHEST_GRADE_COMPLETED_FATHER', 'HIGHEST_GRADE_COMPLETED_MOTHER']
 
 TIME_VARYING = []
-TIME_VARYING += ['ENROLLMENT_STATUS', 'YEAR_OF_BIRTH', 'CPSOCC70']
-TIME_VARYING += ['MONTH_OF_BIRTH', 'HIGHEST_GRADE_COMPLETED', 'SURVEY_YEAR']
-TIME_VARYING += ['INCOME_MILITARY', 'REASON_NONINTERVIEW', 'HIGHEST_GRADE_ATTENDED']
+TIME_VARYING += ['MONTH_OF_BIRTH', 'YEAR_OF_BIRTH', 'SURVEY_YEAR', 'REASON_NONINTERVIEW']
+TIME_VARYING += ['HIGHEST_GRADE_COMPLETED', 'HIGHEST_GRADE_ATTENDED']
 TIME_VARYING += ['HIGHEST_DEGREE_RECEIVED_1', 'HIGHEST_DEGREE_RECEIVED_2']
-TIME_VARYING += ['INCOME_WAGES_SALARY', 'POVSTATUS', 'AMT_WORK_LMT']
-TIME_VARYING += ['TYPE_WORK_LMT','HEALTH_INS', 'MAR_STATUS', 'REGION']
+TIME_VARYING += ['CPSOCC70', 'INCOME_WAGES_SALARY', 'AMT_WORK_LMT', 'TYPE_WORK_LMT']
+TIME_VARYING += ['POVSTATUS', 'HEALTH_INS', 'MAR_STATUS', 'REGION']
 
 for start in ['EMP_HOURS_WK_', 'EMP_STATUS_WK_']:
     for week in ['1', '7', '13', '14', '20', '26', '40', '46', '52']:
@@ -65,7 +69,7 @@ class SourceCls(object):
         """ Read the original file from the NLSY INVESTIGATOR.
         """
         # Read from original data from CSV file
-        self.source_wide = pd.read_csv('data/input/all-variables.csv', nrows=num_agents)
+        self.source_wide = pd.read_csv(project_dir / 'data/all-variables.csv', nrows=num_agents)
 
         # Process variable dictionary
         survey_years, dct = get_mappings()
@@ -388,7 +392,7 @@ def _get_counts_year(series, bins, year):
 
     return counts
 
-# Create final data 
+#
 # %%
 if __name__ == '__main__':
 
@@ -403,3 +407,4 @@ if __name__ == '__main__':
 
     source_obj.load(fname)
     source_obj.testing()
+

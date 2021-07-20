@@ -1,35 +1,39 @@
-# To add a new markdown cell, type '# %% [markdown]'
-# %%
-from IPython import get_ipython
+"""This module processes the Short Description File downloaded along with the raw data
+from the NLS Investigator to get the yearly variable names. Variables are named with a
+reference number that is non-descriptive of the variable and different for the same 
+variable (survey question) in different years. I draw code for this module from 
+https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned 
+version of the NLSY79.
+"""
 
-# %% [markdown]
-# # Processing the Data 
-# %% [markdown]
-# ### In this notebook, the data from the NLSY79 are cleaned and processed for further analysis.
-# %% [markdown]
-# I draw code for this notebook from https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned version of the National Longitudinal Survey of Youth 1979 (NLSY79). 
+
 # %%
+# Import necessary packages 
 import os
 import pandas as pd
 import numpy as np
 import shlex
 from pathlib import Path
+from IPython import get_ipython
 
 
-# %%
-os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis')
-proj_dir = Path(os.path.abspath(""))
-print(proj_dir)
+# %% 
+# Set path 
+code_folder = Path(os.path.abspath(''))
+print(code_folder)
+project_dir = os.path.dirname(code_folder)
+os.chdir(project_dir)
+print(project_dir)
 
 
 # %%
 def get_mappings():
-    """Process a mapping of two separate cases: (1) variables that vary by year, and 
-    (2) variables where there are multiple realizations each year. Start with 1978 
-    as information about 1978 employment histories is collected with the initial 
-    interview. Note that from 1996 on, the NLSY is generated every other year. 
+    """Process a mapping of separate cases: for variables that vary by year, and 
+    for variables where there are multiple realizations each year. 
     """
-    # Set up grid for survey years. 
+    # Set up grid for survey years. Start with 1978 as information about 1978 
+    # employment histories is collected with the initial interview. Note that
+    # from 1996 on, the NLSY is generated every other year.  
     years = range(1978, 2013)
 
     # Set up a dictionary for variables 
@@ -44,6 +48,7 @@ def get_mappings():
     # Finishing
     return years, dct_full
 
+
 # %%
 def get_name(substrings):
     """Search through the variable descriptions in NLSY file by substrings. 
@@ -52,7 +57,7 @@ def get_name(substrings):
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+    with open(project_dir / 'data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -77,7 +82,7 @@ def get_year_name(substrings):
         substrings = [substrings]
 
     container = dict()
-    with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+    with open(project_dir /'data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -125,10 +130,15 @@ def process_time_constant(years):
     substrings = 'HGC-MOTHER'
     for year in years:
         dct_constant['HIGHEST_GRADE_COMPLETED_MOTHER'][year] = get_name(substrings)
+
+    dct_constant['TNFI_79'] = dict()
+    substrings = 'TNFI_TRUNC'
+    for year in years:
+        dct_constant['TNFI_79']
         
-    '''EMOTIONAL / APTITUDE / INTELLIGENCE SCORES 
+    '''ATTITUDE / APTITUDE SCORES 
     '''    
-    # ROTTER'S LOCUS OF CONTROL SCALE 
+    # ROTTER LOCUS OF CONTROL SCALE 
     dct_constant['ROTTER_SCORE'] = dict()
     substrings = 'ROTTER SCALE SCORE'
     for year in years:
@@ -155,8 +165,6 @@ def process_time_constant(years):
             dct_constant[label][year] = get_name(substrings)
 
     # ARMED SERVICES VOCATIONAL APTITUDE BATTERY (ASVAB)
-    # The ASVAB is a well-known aptitude test that is used for career exploration, given
-    # in high schools, community colleges, at job corps centers, and at correctional facilities.
     dct_constant['ASVAB_ARITHMETIC_REASONING'] = dict()
     substrings = 'PROFILES, ASVAB VOCATIONAL TEST - SECTION 2-ARITHMETIC REASONING'
     for year in years:
@@ -182,6 +190,7 @@ def process_time_constant(years):
     for year in years:
         dct_constant['ASVAB_ALTERED_TESTING'][year] = get_name(substrings)
 
+    # ARMED FORCES QUALIFICATION TEST (AFQT)
     dct_constant['AFQT_1'] = dict()
     substrings = 'PROFILES, ARMED FORCES QUALIFICATION TEST (AFQT) PERCENTILE SCORE - 1980'
     for year in years:
@@ -198,7 +207,7 @@ def process_multiple_each_year():
     dct_multiple = dict()
 
     # Mapping between continuous weeks and the calendar year is provided on the NLSY website.
-    mapping_continuous_week = pd.read_pickle(proj_dir / 'data/input/continuous_week_crosswalk_2012.pkl')
+    mapping_continuous_week = pd.read_pickle(project_dir / 'data/continuous_week_crosswalk_2012.pkl')
     years = mapping_continuous_week['Week Start: \nYear'].unique()
 
     # Prepare container
@@ -237,7 +246,6 @@ def process_single_each_year():
     # Initialize containers
     dct = dict()
 
-    
     ''' EDUCATION
     '''
     substrings = 'HIGHEST GRADE ATTENDED'
@@ -289,10 +297,6 @@ def process_single_each_year():
     for i in range(1, 6):
         substrings = ['HOURLY RATE OF PAY JOB #0' + str(i)]
         dct['WAGE_HOURLY_JOB_' + str(i)] = get_year_name(substrings)
-
-    # TOTAL INCOME FROM MILITARY SERVICE
-    substrings = 'TOTAL INCOME FROM MILITARY SERVICE'
-    dct['INCOME_MILITARY'] = get_year_name(substrings)
     
     # TOTAL INCOME FROM WAGES AND SALARY 
     substrings = 'TOTAL INCOME FROM WAGES AND SALARY'
@@ -301,8 +305,7 @@ def process_single_each_year():
     # POVERTY STATUS 
     substrings = 'FAMILY POVERTY STATUS IN PRIOR YEAR'
     dct['POVSTATUS'] = get_year_name(substrings)
-    
-    
+
     '''HEALTH VARIABLES 
     '''
     substrings = 'DOES HEALTH LIMIT KIND OF WORK R CAN DO?'
@@ -328,12 +331,11 @@ def process_single_each_year():
     # REASON FOR NONINTERVIEW
     substrings = ['REASON FOR NONINTERVIEW']
     dct['REASON_NONINTERVIEW'] = get_year_name(substrings)
-    
-    # MILITARY ENROLLMENT STATUS AS OF MAY 1 SURVEY YEAR (REVISED)
-    substrings = 'ENROLLMENT STATUS AS OF MAY 1 SURVEY YEAR (REVISED)'
-    dct['ENROLLMENT_STATUS'] = get_year_name(substrings)
+
+
 
     return dct
+
 
 # %%
 def process_highest_degree_received():
@@ -344,7 +346,7 @@ def process_highest_degree_received():
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(proj_dir / 'data/input/all-variables.sdf', 'r') as infile:
+        with open(project_dir / 'data/all-variables.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
@@ -374,3 +376,5 @@ def process_highest_degree_received():
             dct[label][year] = val
 
     return dct
+
+# %%

@@ -1,27 +1,30 @@
-"""This module contains some auxiliary functions shared across the figures.
-First, read in the dataset and incorporate total net family income in past calendar year."""
+"""This module contains some auxiliary functions shared across the figures and analyses.
+First, read in the dataset and incorporate total net family income."""
 # %%
-import subprocess
+# Import necessary packages
 import os
 
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 # %%
-os.getcwd()
-os.chdir(r'c:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis')
-
+code_folder = Path(os.path.abspath(''))
+print(code_folder)
+project_dir = os.path.dirname(code_folder)
+os.chdir(project_dir)
+print(project_dir)
 
 # %%
 # Read in the dataset
 fname = 'data/all-variables.pkl'
 # Read in data for total net family income 
-fname2 = 'data/input/TNFI_TRUNC_79.csv'
+fname2 = 'data/TNFI_TRUNC_79.csv'
 if not os.path.exists(fname):
-    cwd = os.getcwd()
-    os.chdir('data/')
+     cwd = os.getcwd()
+     os.chdir('data/')
  
-    os.chdir(cwd)
+     os.chdir(cwd)
 
 # %%
 OBS_DATASET = pd.read_pickle(fname)

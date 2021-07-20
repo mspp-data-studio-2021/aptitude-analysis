@@ -1,0 +1,461 @@
+
+
+Reference
+Number     Year  Variable Description                                                            Question Name          
+--------------------------------------------------------------------------------------------------------------------------
+R00001.00  1979  IDENTIFICATION CODE                                                             CASEID                 
+R01449.00  1979  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R01450.00  1979  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R01554.00  1979  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5                  
+R02164.00  1979  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R02175.01  1979  MARITAL STATUS                                                                  MARSTAT-KEY            
+R02179.10  1979  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R02989.00  1980  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R02990.00  1980  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R03123.00  1980  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5                  
+R04056.01  1980  MARITAL STATUS                                                                  MARSTAT-KEY            
+R04057.00  1980  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R04061.00  1980  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R04782.00  1981  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R04783.00  1981  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R04826.00  1981  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5                  
+R06028.10  1981  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R06185.00  1981  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R06186.01  1981  MARITAL STATUS                                                                  MARSTAT-KEY            
+R07764.00  1982  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R07765.00  1982  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R07821.01  1982  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR Year                        Q13-5   
+R08979.10  1982  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R08984.01  1982  MARITAL STATUS                                                                  MARSTAT-KEY            
+R08987.00  1982  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R10211.00  1983  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R10212.00  1983  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R10240.01  1983  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5   
+R11446.00  1983  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R11448.00  1983  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R11449.01  1983  MARITAL STATUS                                                                  MARSTAT-KEY            
+R13904.00  1984  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R13905.00  1984  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R14107.01  1984  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5   
+R15198.00  1984  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R15200.00  1984  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R15201.01  1984  MARITAL STATUS                                                                  MARSTAT-KEY            
+R17733.00  1985  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R17734.00  1985  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R17785.01  1985  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5   
+R18905.00  1985  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R18907.00  1985  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R18908.01  1985  MARITAL STATUS                                                                  MARSTAT-KEY            
+R21408.00  1986  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R21409.00  1986  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R21416.01  1986  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R22576.00  1986  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R22578.00  1986  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R22579.01  1986  MARITAL STATUS                                                                  MARSTAT-KEY            
+R23486.00  1987  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R23487.00  1987  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R23503.01  1987  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R24449.00  1987  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R24452.00  1987  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R24453.01  1987  MARITAL STATUS                                                                  MARSTAT-KEY            
+R27110.00  1988  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R27111.00  1988  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R27225.01  1988  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R28704.00  1988  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R28708.00  1988  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R28710.00  1988  MARITAL STATUS                                                                  MARSTAT-KEY            
+R29591.00  1989  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R29592.00  1989  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R29714.01  1989  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R30741.00  1989  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R30745.00  1989  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R30747.00  1989  MARITAL STATUS                                                                  MARSTAT-KEY            
+R32705.00  1990  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R32706.00  1990  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R32766.00  1990  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R32794.01  1990  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R34008.00  1990  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R34012.00  1990  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R34014.00  1990  MARITAL STATUS                                                                  MARSTAT-KEY            
+R35580.00  1991  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R35581.00  1991  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R35590.01  1991  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R36562.00  1991  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R36566.00  1991  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R36568.00  1991  MARITAL STATUS                                                                  MARSTAT-KEY            
+R38856.00  1992  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R38857.00  1992  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R38916.00  1992  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R38971.01  1992  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R40067.00  1992  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R40071.00  1992  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R40073.00  1992  MARITAL STATUS                                                                  MARSTAT-KEY            
+R42840.00  1993  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R42841.00  1993  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R42911.00  1993  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R42951.01  1993  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R44178.00  1993  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R44182.00  1993  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R44184.00  1993  MARITAL STATUS                                                                  MARSTAT-KEY            
+R49612.00  1994  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R49613.00  1994  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R49686.00  1994  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R49828.01  1994  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R50808.00  1994  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R50812.00  1994  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R50814.00  1994  MARITAL STATUS                                                                  MARSTAT-KEY            
+R51661.00  1996  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R51665.00  1996  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R51667.00  1996  MARITAL STATUS                                                                  MARSTAT-KEY            
+R56167.00  1996  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R56168.00  1996  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R56235.00  1996  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R56262.01  1996  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R63437.00  1998  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R63438.00  1998  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R63503.00  1998  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R63646.01  1998  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R64788.00  1998  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R64791.00  1998  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R64793.00  1998  MARITAL STATUS                                                                  MARSTAT-KEY            
+R68873.00  2000  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R68874.00  2000  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R68949.00  2000  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R69097.01  2000  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5    
+R70066.00  2000  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R70068.00  2000  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R70070.00  2000  MARITAL STATUS                                                                  MARSTAT-KEY            
+R75977.00  2002  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R75978.00  2002  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R75999.00  2002  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R76078.00  2002  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+R77039.00  2002  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R77041.00  2002  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R77043.00  2002  MARITAL STATUS                                                                  MARSTAT-KEY            
+R82975.00  2004  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+R82976.00  2004  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+R83020.00  2004  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+R83163.00  2004  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+R84963.00  2004  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+R84965.00  2004  REGION OF CURRENT RESIDENCE                                                     REGION                 
+R84967.00  2004  MARITAL STATUS                                                                  MARSTAT-KEY            
+T08958.00  2006  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T08959.00  2006  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T08999.00  2006  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T09124.00  2006  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+T09879.00  2006  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T09883.00  2006  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T09885.00  2006  MARITAL STATUS                                                                  MARSTAT-KEY            
+T20516.00  2008  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T20517.00  2008  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T20582.00  2008  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T20767.00  2008  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+T22101.00  2008  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T22103.00  2008  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T22105.00  2008  MARITAL STATUS                                                                  MARSTAT-KEY            
+T30229.00  2010  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T30230.00  2010  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T30287.00  2010  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T30453.00  2010  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+T31080.00  2010  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T31082.00  2010  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T31084.00  2010  MARITAL STATUS                                                                  MARSTAT-KEY            
+T39531.00  2012  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T39532.00  2012  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T39595.00  2012  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T39774.00  2012  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+T41125.00  2012  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T41127.00  2012  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T41129.00  2012  MARITAL STATUS                                                                  MARSTAT-KEY            
+T48908.00  2014  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T48909.00  2014  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T48972.00  2014  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T49152.00  2014  TOTAL INCOME FROM MILITARY SERVICE IN PAST CALENDAR YEAR (TRUNC)                Q13-3_TRUNC            
+T49158.00  2014  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR                        Q13-5            
+T50197.00  2014  HOURLY RATE OF PAY JOB #01                                                      HRP1                   
+T50199.00  2014  HOURLY RATE OF PAY JOB #02                                                      HRP2                   
+T50201.00  2014  HOURLY RATE OF PAY JOB #03                                                      HRP3                   
+T50203.00  2014  HOURLY RATE OF PAY JOB #04                                                      HRP4                   
+T50205.00  2014  HOURLY RATE OF PAY JOB #05                                                      HRP5                   
+T50228.00  2014  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T50231.00  2014  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T50233.00  2014  MARITAL STATUS                                                                  MARSTAT-KEY            
+T50235.00  2014  HIGHEST GRADE COMPLETED AS OF MAY 1 SURVEY YEAR (REVISED)                       HGCREV14               
+T51755.00  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - OCT 2014                             Q3-1A~000001           
+T51755.01  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - NOV 2014                             Q3-1A~000002           
+T51755.02  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT- DEC 2014                              Q3-1A~000003           
+T51755.03  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JAN 2015                             Q3-1A~000004           
+T51755.04  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - FEB 2015                             Q3-1A~000005           
+T51755.05  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAR 2015                             Q3-1A~000006           
+T51755.06  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - APR 2015                             Q3-1A~000007           
+T51755.07  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAY 2015                             Q3-1A~000008           
+T51755.08  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUN 2015                             Q3-1A~000009           
+T51755.09  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUL 2015                             Q3-1A~000010           
+T51755.10  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - AUG 2015                             Q3-1A~000011           
+T51755.11  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - SEP 2015                             Q3-1A~000012           
+T51755.12  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - OCT 2015                             Q3-1A~000013           
+T51755.13  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - NOV 2015                             Q3-1A~000014           
+T51755.14  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - DEC 2015                             Q3-1A~000015           
+T51755.15  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JAN 2016                             Q3-1A~000016           
+T51755.16  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - FEB 2016                             Q3-1A~000017           
+T51755.17  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAR 2016                             Q3-1A~000018           
+T51755.18  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - APR 2016                             Q3-1A~000019           
+T51755.19  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAY 2016                             Q3-1A~000020           
+T51755.20  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUN 2016                             Q3-1A~000021           
+T51755.21  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUL 2016                             Q3-1A~000022           
+T51755.22  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - AUG 2016                             Q3-1A~000023           
+T51755.23  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - SEP 2016                             Q3-1A~000024           
+T51755.24  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - OCT 2016                             Q3-1A~000025           
+T51755.25  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - NOV 2016                             Q3-1A~000026           
+T51755.26  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - DEC 2016                             Q3-1A~000027           
+T51755.27  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JAN 2017                             Q3-1A~000028           
+T51755.28  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - FEB 2017                             Q3-1A~000029           
+T51755.29  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAR 2017                             Q3-1A~000030           
+T51755.30  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - APR 2017                             Q3-1A~000031           
+T51755.31  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - MAY 2017                             Q3-1A~000032           
+T51755.32  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUN 2017                             Q3-1A~000033           
+T51755.33  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - JUL 2017                             Q3-1A~000034           
+T51755.34  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - AUG 2017                             Q3-1A~000035           
+T51755.35  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - SEP 2017                             Q3-1A~000036           
+T51755.36  2016  MONTHS ENROLLED IN SCHOOL SINCE LAST INT - OCT 2017                             Q3-1A~000037           
+T51760.00  2016  HIGHEST GRADE ATTENDED                                                          Q3-3                   
+T51772.00  2016  HIGHEST DEGREE EVER RECEIVED                                                    Q3-10B                 
+T51775.00  2016  HIGHEST DEGREE EVER RECEIVED                                                    Q3-10D                 
+T52569.00  2016  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01                             OCCALL-EMP.01          
+T52570.00  2016  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02                             OCCALL-EMP.02          
+T52571.00  2016  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03                             OCCALL-EMP.03          
+T52572.00  2016  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04                             OCCALL-EMP.04          
+T52573.00  2016  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05                             OCCALL-EMP.05          
+T55939.00  2016  DOES HEALTH LIMIT KIND OF WORK R CAN DO?                                        Q11-4                  
+T55940.00  2016  DOES HEALTH LIMIT AMOUNT OF WORK R CAN DO?                                      Q11-5                  
+T56012.00  2016  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T56189.00  2016  TOTAL INCOME FROM MILITARY SERVICE IN PAST CALENDAR YEAR (TRUNC)                Q13-3_TRUNC            
+T56195.00  2016  TOTAL INCOME FROM WAGES AND SALARY IN PAST CALENDAR YEAR  (TRUNC)               Q13-5_TRUNC            
+T57686.00  2016  HOURLY RATE OF PAY JOB #01                                                      HRP1                   
+T57688.00  2016  HOURLY RATE OF PAY JOB #02                                                      HRP2                   
+T57690.00  2016  HOURLY RATE OF PAY JOB #03                                                      HRP3                   
+T57692.00  2016  HOURLY RATE OF PAY JOB #04                                                      HRP4                   
+T57694.00  2016  HOURLY RATE OF PAY JOB #05                                                      HRP5                   
+T57706.00  2016  REASON FOR NONINTERVIEW                                                         RNI                    
+T57709.00  2016  FAMILY POVERTY STATUS IN PREVIOUS CALENDAR YEAR                                 POVSTATUS              
+T57710.00  2016  REGION OF CURRENT RESIDENCE                                                     REGION                 
+T57712.00  2016  MARITAL STATUS                                                                  MARSTAT-KEY            
+T57714.00  2016  HIGHEST GRADE COMPLETED AS OF MAY 1 SURVEY YEAR (REVISED)                       HGCREV16               
+T77438.00  2018  HIGHEST GRADE ATTENDED                                                          Q3-3                   
+T77450.00  2018  HIGHEST DEGREE EVER RECEIVED                                                    Q3-10B                 
+T77453.00  2018  HIGHEST DEGREE EVER RECEIVED                                                    Q3-10D                 
+T78186.00  2018  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01                             OCCALL-EMP.01          
+T78187.00  2018  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02                             OCCALL-EMP.02          
+T78188.00  2018  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03                             OCCALL-EMP.03          
+T78189.00  2018  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04                             OCCALL-EMP.04          
+T78190.00  2018  OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05                             OCCALL-EMP.05          
+T80934.00  2018  R COVERED BY ANY HEALTH/HOSPITALIZATION PLAN                                    Q11-79                 
+T82185.00  2018  REASON FOR NONINTERVIEW                                                         RNI                    
+W12720.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1880                                              HRS_WORKED_WK_NUM1880  
+W12721.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1881                                              HRS_WORKED_WK_NUM1881  
+W12722.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1882                                              HRS_WORKED_WK_NUM1882  
+W12723.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1883                                              HRS_WORKED_WK_NUM1883  
+W12724.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1884                                              HRS_WORKED_WK_NUM1884  
+W12725.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1885                                              HRS_WORKED_WK_NUM1885  
+W12726.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1886                                              HRS_WORKED_WK_NUM1886  
+W12727.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1887                                              HRS_WORKED_WK_NUM1887  
+W12728.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1888                                              HRS_WORKED_WK_NUM1888  
+W12729.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1889                                              HRS_WORKED_WK_NUM1889  
+W12730.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1890                                              HRS_WORKED_WK_NUM1890  
+W12731.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1891                                              HRS_WORKED_WK_NUM1891  
+W12732.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1892                                              HRS_WORKED_WK_NUM1892  
+W12733.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1893                                              HRS_WORKED_WK_NUM1893  
+W12734.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1894                                              HRS_WORKED_WK_NUM1894  
+W12735.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1895                                              HRS_WORKED_WK_NUM1895  
+W12736.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1896                                              HRS_WORKED_WK_NUM1896  
+W12737.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1897                                              HRS_WORKED_WK_NUM1897  
+W12738.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1898                                              HRS_WORKED_WK_NUM1898  
+W12739.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1899                                              HRS_WORKED_WK_NUM1899  
+W12740.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1900                                              HRS_WORKED_WK_NUM1900  
+W12741.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1901                                              HRS_WORKED_WK_NUM1901  
+W12742.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1902                                              HRS_WORKED_WK_NUM1902  
+W12743.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1903                                              HRS_WORKED_WK_NUM1903  
+W12744.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1904                                              HRS_WORKED_WK_NUM1904  
+W12745.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1905                                              HRS_WORKED_WK_NUM1905  
+W12746.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1906                                              HRS_WORKED_WK_NUM1906  
+W12747.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1907                                              HRS_WORKED_WK_NUM1907  
+W12748.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1908                                              HRS_WORKED_WK_NUM1908  
+W12749.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1909                                              HRS_WORKED_WK_NUM1909  
+W12750.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1910                                              HRS_WORKED_WK_NUM1910  
+W12751.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1911                                              HRS_WORKED_WK_NUM1911  
+W12752.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1912                                              HRS_WORKED_WK_NUM1912  
+W12753.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1813                                              HRS_WORKED_WK_NUM1913  
+W12754.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1914                                              HRS_WORKED_WK_NUM1914  
+W12755.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1915                                              HRS_WORKED_WK_NUM1915  
+W12756.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1916                                              HRS_WORKED_WK_NUM1916  
+W12757.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1917                                              HRS_WORKED_WK_NUM1917  
+W12758.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1918                                              HRS_WORKED_WK_NUM1918  
+W12759.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1919                                              HRS_WORKED_WK_NUM1919  
+W12760.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1920                                              HRS_WORKED_WK_NUM1920  
+W12761.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1921                                              HRS_WORKED_WK_NUM1921  
+W12762.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1922                                              HRS_WORKED_WK_NUM1922  
+W12763.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1923                                              HRS_WORKED_WK_NUM1923  
+W12764.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1924                                              HRS_WORKED_WK_NUM1924  
+W12765.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1925                                              HRS_WORKED_WK_NUM1925  
+W12766.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1926                                              HRS_WORKED_WK_NUM1926  
+W12767.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1927                                              HRS_WORKED_WK_NUM1927  
+W12768.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1928                                              HRS_WORKED_WK_NUM1928  
+W12769.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1929                                              HRS_WORKED_WK_NUM1929  
+W12770.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1930                                              HRS_WORKED_WK_NUM1930  
+W12771.00  XRND  HOURS AT ALL JOBS (2014) WEEK 1931                                              HRS_WORKED_WK_NUM1931  
+W12772.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1932                                              HRS_WORKED_WK_NUM1932  
+W12773.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1933                                              HRS_WORKED_WK_NUM1933  
+W12774.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1934                                              HRS_WORKED_WK_NUM1934  
+W12775.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1935                                              HRS_WORKED_WK_NUM1935  
+W12776.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1936                                              HRS_WORKED_WK_NUM1936  
+W12777.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1837                                              HRS_WORKED_WK_NUM1937  
+W12778.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1938                                              HRS_WORKED_WK_NUM1938  
+W12779.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1939                                              HRS_WORKED_WK_NUM1939  
+W12780.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1940                                              HRS_WORKED_WK_NUM1940  
+W12781.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1941                                              HRS_WORKED_WK_NUM1941  
+W12782.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1942                                              HRS_WORKED_WK_NUM1942  
+W12783.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1943                                              HRS_WORKED_WK_NUM1943  
+W12784.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1944                                              HRS_WORKED_WK_NUM1944  
+W12785.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1945                                              HRS_WORKED_WK_NUM1945  
+W12786.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1946                                              HRS_WORKED_WK_NUM1946  
+W12787.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1947                                              HRS_WORKED_WK_NUM1947  
+W12788.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1948                                              HRS_WORKED_WK_NUM1948  
+W12789.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1949                                              HRS_WORKED_WK_NUM1949  
+W12790.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1950                                              HRS_WORKED_WK_NUM1950  
+W12791.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1951                                              HRS_WORKED_WK_NUM1951  
+W12792.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1952                                              HRS_WORKED_WK_NUM1952  
+W12793.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1953                                              HRS_WORKED_WK_NUM1953  
+W12794.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1954                                              HRS_WORKED_WK_NUM1954  
+W12795.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1955                                              HRS_WORKED_WK_NUM1955  
+W12796.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1956                                              HRS_WORKED_WK_NUM1956  
+W12797.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1957                                              HRS_WORKED_WK_NUM1957  
+W12798.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1958                                              HRS_WORKED_WK_NUM1958  
+W12799.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1959                                              HRS_WORKED_WK_NUM1959  
+W12800.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1960                                              HRS_WORKED_WK_NUM1960  
+W12801.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1961                                              HRS_WORKED_WK_NUM1961  
+W12802.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1962                                              HRS_WORKED_WK_NUM1962  
+W12803.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1963                                              HRS_WORKED_WK_NUM1963  
+W12804.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1964                                              HRS_WORKED_WK_NUM1964  
+W12805.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1965                                              HRS_WORKED_WK_NUM1965  
+W12806.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1966                                              HRS_WORKED_WK_NUM1966  
+W12807.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1967                                              HRS_WORKED_WK_NUM1967  
+W12808.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1968                                              HRS_WORKED_WK_NUM1968  
+W12809.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1969                                              HRS_WORKED_WK_NUM1969  
+W12810.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1970                                              HRS_WORKED_WK_NUM1970  
+W12811.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1971                                              HRS_WORKED_WK_NUM1971  
+W12812.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1972                                              HRS_WORKED_WK_NUM1972  
+W12813.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1973                                              HRS_WORKED_WK_NUM1973  
+W12814.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1974                                              HRS_WORKED_WK_NUM1974  
+W12815.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1975                                              HRS_WORKED_WK_NUM1975  
+W12816.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1976                                              HRS_WORKED_WK_NUM1976  
+W12817.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1977                                              HRS_WORKED_WK_NUM1977  
+W12818.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1978                                              HRS_WORKED_WK_NUM1978  
+W12819.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1979                                              HRS_WORKED_WK_NUM1979  
+W12820.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1980                                              HRS_WORKED_WK_NUM1980  
+W12821.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1981                                              HRS_WORKED_WK_NUM1981  
+W12822.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1982                                              HRS_WORKED_WK_NUM1982  
+W12823.00  XRND  HOURS AT ALL JOBS (2015) WEEK 1983                                              HRS_WORKED_WK_NUM1983  
+W12824.00  XRND  LABOR FORCE STATUS (2014) WEEK 1880                                             STATUS_WK_NUM1880      
+W12825.00  XRND  LABOR FORCE STATUS (2014) WEEK 1881                                             STATUS_WK_NUM1881      
+W12826.00  XRND  LABOR FORCE STATUS (2014) WEEK 1882                                             STATUS_WK_NUM1882      
+W12827.00  XRND  LABOR FORCE STATUS (2014) WEEK 1883                                             STATUS_WK_NUM1883      
+W12828.00  XRND  LABOR FORCE STATUS (2014) WEEK 1884                                             STATUS_WK_NUM1884      
+W12829.00  XRND  LABOR FORCE STATUS (2014) WEEK 1885                                             STATUS_WK_NUM1885      
+W12830.00  XRND  LABOR FORCE STATUS (2014) WEEK 1886                                             STATUS_WK_NUM1886      
+W12831.00  XRND  LABOR FORCE STATUS (2014) WEEK 1887                                             STATUS_WK_NUM1887      
+W12832.00  XRND  LABOR FORCE STATUS (2014) WEEK 1888                                             STATUS_WK_NUM1888      
+W12833.00  XRND  LABOR FORCE STATUS (2014) WEEK 1889                                             STATUS_WK_NUM1889      
+W12834.00  XRND  LABOR FORCE STATUS (2014) WEEK 1890                                             STATUS_WK_NUM1890      
+W12835.00  XRND  LABOR FORCE STATUS (2014) WEEK 1891                                             STATUS_WK_NUM1891      
+W12836.00  XRND  LABOR FORCE STATUS (2014) WEEK 1892                                             STATUS_WK_NUM1892      
+W12837.00  XRND  LABOR FORCE STATUS (2014) WEEK 1893                                             STATUS_WK_NUM1893      
+W12838.00  XRND  LABOR FORCE STATUS (2014) WEEK 1894                                             STATUS_WK_NUM1894      
+W12839.00  XRND  LABOR FORCE STATUS (2014) WEEK 1895                                             STATUS_WK_NUM1895      
+W12840.00  XRND  LABOR FORCE STATUS (2014) WEEK 1896                                             STATUS_WK_NUM1896      
+W12841.00  XRND  LABOR FORCE STATUS (2014) WEEK 1897                                             STATUS_WK_NUM1897      
+W12842.00  XRND  LABOR FORCE STATUS (2014) WEEK 1898                                             STATUS_WK_NUM1898      
+W12843.00  XRND  LABOR FORCE STATUS (2014) WEEK 1899                                             STATUS_WK_NUM1899      
+W12844.00  XRND  LABOR FORCE STATUS (2014) WEEK 1900                                             STATUS_WK_NUM1900      
+W12845.00  XRND  LABOR FORCE STATUS (2014) WEEK 1901                                             STATUS_WK_NUM1901      
+W12846.00  XRND  LABOR FORCE STATUS (2014) WEEK 1902                                             STATUS_WK_NUM1902      
+W12847.00  XRND  LABOR FORCE STATUS (2014) WEEK 1903                                             STATUS_WK_NUM1903      
+W12848.00  XRND  LABOR FORCE STATUS (2014) WEEK 1904                                             STATUS_WK_NUM1904      
+W12849.00  XRND  LABOR FORCE STATUS (2014) WEEK 1905                                             STATUS_WK_NUM1905      
+W12850.00  XRND  LABOR FORCE STATUS (2014) WEEK 1906                                             STATUS_WK_NUM1906      
+W12851.00  XRND  LABOR FORCE STATUS (2014) WEEK 1907                                             STATUS_WK_NUM1907      
+W12852.00  XRND  LABOR FORCE STATUS (2014) WEEK 1908                                             STATUS_WK_NUM1908      
+W12853.00  XRND  LABOR FORCE STATUS (2014) WEEK 1909                                             STATUS_WK_NUM1909      
+W12854.00  XRND  LABOR FORCE STATUS (2014) WEEK 1910                                             STATUS_WK_NUM1910      
+W12855.00  XRND  LABOR FORCE STATUS (2014) WEEK 1911                                             STATUS_WK_NUM1911      
+W12856.00  XRND  LABOR FORCE STATUS (2014) WEEK 1812                                             STATUS_WK_NUM1912      
+W12857.00  XRND  LABOR FORCE STATUS (2014) WEEK 1913                                             STATUS_WK_NUM1913      
+W12858.00  XRND  LABOR FORCE STATUS (2014) WEEK 1914                                             STATUS_WK_NUM1914      
+W12859.00  XRND  LABOR FORCE STATUS (2014) WEEK 1915                                             STATUS_WK_NUM1915      
+W12860.00  XRND  LABOR FORCE STATUS (2014) WEEK 1916                                             STATUS_WK_NUM1916      
+W12861.00  XRND  LABOR FORCE STATUS (2014) WEEK 1917                                             STATUS_WK_NUM1917      
+W12862.00  XRND  LABOR FORCE STATUS (2014) WEEK 1918                                             STATUS_WK_NUM1918      
+W12863.00  XRND  LABOR FORCE STATUS (2014) WEEK 1919                                             STATUS_WK_NUM1919      
+W12864.00  XRND  LABOR FORCE STATUS (2014) WEEK 1920                                             STATUS_WK_NUM1920      
+W12865.00  XRND  LABOR FORCE STATUS (2014) WEEK 1921                                             STATUS_WK_NUM1921      
+W12866.00  XRND  LABOR FORCE STATUS (2014) WEEK 1922                                             STATUS_WK_NUM1922      
+W12867.00  XRND  LABOR FORCE STATUS (2014) WEEK 1923                                             STATUS_WK_NUM1923      
+W12868.00  XRND  LABOR FORCE STATUS (2014) WEEK 1924                                             STATUS_WK_NUM1924      
+W12869.00  XRND  LABOR FORCE STATUS (2014) WEEK 1925                                             STATUS_WK_NUM1925      
+W12870.00  XRND  LABOR FORCE STATUS (2014) WEEK 1926                                             STATUS_WK_NUM1926      
+W12871.00  XRND  LABOR FORCE STATUS (2014) WEEK 1927                                             STATUS_WK_NUM1927      
+W12872.00  XRND  LABOR FORCE STATUS (2014) WEEK 1928                                             STATUS_WK_NUM1928      
+W12873.00  XRND  LABOR FORCE STATUS (2014) WEEK 1929                                             STATUS_WK_NUM1929      
+W12874.00  XRND  LABOR FORCE STATUS (2014) WEEK 1930                                             STATUS_WK_NUM1930      
+W12875.00  XRND  LABOR FORCE STATUS (2014) WEEK 1931                                             STATUS_WK_NUM1931      
+W12876.00  XRND  LABOR FORCE STATUS (2015) WEEK 1932                                             STATUS_WK_NUM1932      
+W12877.00  XRND  LABOR FORCE STATUS (2015) WEEK 1933                                             STATUS_WK_NUM1933      
+W12878.00  XRND  LABOR FORCE STATUS (2015) WEEK 1934                                             STATUS_WK_NUM1934      
+W12879.00  XRND  LABOR FORCE STATUS (2015) WEEK 1935                                             STATUS_WK_NUM1935      
+W12880.00  XRND  LABOR FORCE STATUS (2015) WEEK 1936                                             STATUS_WK_NUM1936      
+W12881.00  XRND  LABOR FORCE STATUS (2015) WEEK 1937                                             STATUS_WK_NUM1937      
+W12882.00  XRND  LABOR FORCE STATUS (2015) WEEK 1938                                             STATUS_WK_NUM1938      
+W12883.00  XRND  LABOR FORCE STATUS (2015) WEEK 1939                                             STATUS_WK_NUM1939      
+W12884.00  XRND  LABOR FORCE STATUS (2015) WEEK 1940                                             STATUS_WK_NUM1940      
+W12885.00  XRND  LABOR FORCE STATUS (2015) WEEK 1941                                             STATUS_WK_NUM1941      
+W12886.00  XRND  LABOR FORCE STATUS (2015) WEEK 1942                                             STATUS_WK_NUM1942      
+W12887.00  XRND  LABOR FORCE STATUS (2015) WEEK 1943                                             STATUS_WK_NUM1943      
+W12888.00  XRND  LABOR FORCE STATUS (2015) WEEK 1944                                             STATUS_WK_NUM1944      
+W12889.00  XRND  LABOR FORCE STATUS (2015) WEEK 1945                                             STATUS_WK_NUM1945      
+W12890.00  XRND  LABOR FORCE STATUS (2015) WEEK 1946                                             STATUS_WK_NUM1946      
+W12891.00  XRND  LABOR FORCE STATUS (2015) WEEK 1947                                             STATUS_WK_NUM1947      
+W12892.00  XRND  LABOR FORCE STATUS (2015) WEEK 1948                                             STATUS_WK_NUM1948      
+W12893.00  XRND  LABOR FORCE STATUS (2015) WEEK 1949                                             STATUS_WK_NUM1949      
+W12894.00  XRND  LABOR FORCE STATUS (2015) WEEK 1950                                             STATUS_WK_NUM1950      
+W12895.00  XRND  LABOR FORCE STATUS (2015) WEEK 1951                                             STATUS_WK_NUM1951      
+W12896.00  XRND  LABOR FORCE STATUS (2015) WEEK 1952                                             STATUS_WK_NUM1952      
+W12897.00  XRND  LABOR FORCE STATUS (2015) WEEK 1953                                             STATUS_WK_NUM1953      
+W12898.00  XRND  LABOR FORCE STATUS (2015) WEEK 1954                                             STATUS_WK_NUM1954      
+W12899.00  XRND  LABOR FORCE STATUS (2015) WEEK 1955                                             STATUS_WK_NUM1955      
+W12900.00  XRND  LABOR FORCE STATUS (2015) WEEK 1956                                             STATUS_WK_NUM1956      
+W12901.00  XRND  LABOR FORCE STATUS (2015) WEEK 1957                                             STATUS_WK_NUM1957      
+W12902.00  XRND  LABOR FORCE STATUS (2015) WEEK 1958                                             STATUS_WK_NUM1958      
+W12903.00  XRND  LABOR FORCE STATUS (2015) WEEK 1959                                             STATUS_WK_NUM1959      
+W12904.00  XRND  LABOR FORCE STATUS (2015) WEEK 1960                                             STATUS_WK_NUM1960      
+W12905.00  XRND  LABOR FORCE STATUS (2015) WEEK 1961                                             STATUS_WK_NUM1961      
+W12906.00  XRND  LABOR FORCE STATUS (2015) WEEK 1962                                             STATUS_WK_NUM1962      
+W12907.00  XRND  LABOR FORCE STATUS (2015) WEEK 1963                                             STATUS_WK_NUM1963      
+W12908.00  XRND  LABOR FORCE STATUS (2015) WEEK 1964                                             STATUS_WK_NUM1964      
+W12909.00  XRND  LABOR FORCE STATUS (2015) WEEK 1965                                             STATUS_WK_NUM1965      
+W12910.00  XRND  LABOR FORCE STATUS (2015) WEEK 1966                                             STATUS_WK_NUM1966      
+W12911.00  XRND  LABOR FORCE STATUS (2015) WEEK 1967                                             STATUS_WK_NUM1967      
+W12912.00  XRND  LABOR FORCE STATUS (2015) WEEK 1968                                             STATUS_WK_NUM1968      
+W12913.00  XRND  LABOR FORCE STATUS (2015) WEEK 1969                                             STATUS_WK_NUM1969      
+W12914.00  XRND  LABOR FORCE STATUS (2015) WEEK 1970                                             STATUS_WK_NUM1970      
+W12915.00  XRND  LABOR FORCE STATUS (2015) WEEK 1971                                             STATUS_WK_NUM1971      
+W12916.00  XRND  LABOR FORCE STATUS (2015) WEEK 1972                                             STATUS_WK_NUM1972      
+W12917.00  XRND  LABOR FORCE STATUS (2015) WEEK 1973                                             STATUS_WK_NUM1973      
+W12918.00  XRND  LABOR FORCE STATUS (2015) WEEK 1974                                             STATUS_WK_NUM1974      
+W12919.00  XRND  LABOR FORCE STATUS (2015) WEEK 1975                                             STATUS_WK_NUM1975      
+W12920.00  XRND  LABOR FORCE STATUS (2015) WEEK 1976                                             STATUS_WK_NUM1976      
+W12921.00  XRND  LABOR FORCE STATUS (2015) WEEK 1977                                             STATUS_WK_NUM1977      
+W12922.00  XRND  LABOR FORCE STATUS (2015) WEEK 1978                                             STATUS_WK_NUM1978      
+W12923.00  XRND  LABOR FORCE STATUS (2015) WEEK 1979                                             STATUS_WK_NUM1979      
+W12924.00  XRND  LABOR FORCE STATUS (2015) WEEK 1980                                             STATUS_WK_NUM1980      
+W12925.00  XRND  LABOR FORCE STATUS (2015) WEEK 1981                                             STATUS_WK_NUM1981      
+W12926.00  XRND  LABOR FORCE STATUS (2015) WEEK 1982                                             STATUS_WK_NUM1982      
+W12927.00  XRND  LABOR FORCE STATUS (2015) WEEK 1983                                             STATUS_WK_NUM1983      
