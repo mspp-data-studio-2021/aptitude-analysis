@@ -285,6 +285,7 @@ class SourceCls(object):
         """
         # Distribute class attributes
         self.source_long = pd.read_pickle(fname)
+        print(type(fname))
         
 
 
