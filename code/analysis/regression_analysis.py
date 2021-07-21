@@ -7,8 +7,8 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 
-from setup_plots import SURVEY_YEARS
-from setup_plots import get_dataset
+from setup_fin_dataset import SURVEY_YEARS
+from setup_fin_dataset import get_dataset
 
 # %%
 df = get_dataset()
