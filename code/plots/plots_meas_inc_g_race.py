@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from setup_plots import get_dataset
+from setup_fin_dataset import get_dataset
 
 # %%
 os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/out/heatmaps')

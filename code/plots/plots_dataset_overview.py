@@ -7,8 +7,8 @@ import numpy as np
 import matplotlib
 from mpl_toolkits.axisartist.axislines import Subplot
 
-from setup_plots import SURVEY_YEARS
-from setup_plots import get_dataset
+from setup_fin_dataset import SURVEY_YEARS
+from setup_fin_dataset import get_dataset
 
 # %%
 os.getcwd() 
@@ -121,81 +121,3 @@ ax.spines['right'].set_visible(False)
 plt.savefig('fig3-dataset-basic-inc-quartiles.png')
 
 
-
-
-
-
-# # %%
-# dat = df.loc[df['SURVEY_YEAR'] == 1978, 'TNFI_TRUNC']
-# dat = dat.value_counts().to_dict()
-
-# N_points = 12686
-# n_bins = 5
-
-# ax = plt.figure().add_subplot(111)
-# set_formatter(ax)
-
-# ax[0].hist(dat.keys(), 
-# ax[1].hist(dat.values(), )
-
-# fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
-
-# # We can set the number of bins with the `bins` kwarg
-# axs[0].hist(x, bins=n_bins)
-# axs[1].hist(y, bins=n_bins)
-
-
-# # %%
-# ax = plt.figure().add_subplot(111)
-# set_formatter(ax)
-
-# csfont = {'fontname':'Times New Roman'}
-
-# ax.set_ylabel('Number of Respondents', **csfont)
-# ax.set_xlabel('Income Quintile', **csfont)
-# ax.set_title('Figure 4. Respondents\' family income quartile, NLSY79 (1978)', **csfont)
-# ax.hist(dat.keys(), dat.values())
-
-# # plt.savefig('fig1-dataset-basic-birth.png')
-
-
-
-
-# # %%
-# df['FAMILY_INCOME_QUARTILE'].count()
-
-# # %%
-# df.columns
-
-# # %%
-# df['TNFI_TRUNC'] = df['TNFI_TRUNC'].replace(-3, np.nan)
-# df['TNFI_TRUNC'] = df['TNFI_TRUNC'].replace(-2, np.nan)
-# df['TNFI_TRUNC'] = df['TNFI_TRUNC'].replace(-1, np.nan)
-
-# # %%
-# df2 = df[(df['SURVEY_YEAR'] == 1978)] 
-# df2.head()
-
-# # %%
-# df2['FAMILY_INCOME_QUARTILE'].sort_values()
-
-# # %%
-# inc_group = df2.groupby('FAMILY_INCOME_QUARTILE')['IDENTIFIER'].nunique().sort_values(ascending=False)
-# inc_group
-
-# plt.hist()
-
-# # %%
-# df2['TNFI_TRUNC'].describe()
-
-# plt.hist(df2['TNFI_TRUNC'], bins=5, alpha=0.9)
-
-# csfont = {'fontname':'Times New Roman'}
-
-# ## Add labels and title
-# plt.xlabel('Net family income quintiles')
-# plt.ylabel('Dollars (1978, not adjusted)')
-# plt.title('Figure 4. Net family income quintiles')
-# plt.savefig('fig4-dataset-basic-income-quintiles.png')
-
-# %%

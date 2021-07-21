@@ -8,7 +8,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-from setup_plots import get_dataset
+from setup_fin_dataset import get_dataset
 
 # %%
 # Confirm the working directory
