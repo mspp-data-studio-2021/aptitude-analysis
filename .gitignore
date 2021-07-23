@@ -73,3 +73,26 @@ data/all-vars.pkl
 lit/feedback.txt
 draft/Blog-v1.docx
 code/exploratory_data_analysis.py
+code/analysis/education_analysis.py
+code/__pycache__/setup_fin_dataset.cpython-38.pyc
+console_app1/.vs/console_app1/DesignTimeBuild/.dtbcache.v2
+console_app1/.vs/console_app1/v16/.suo
+*.db
+*.sln
+*.csproj
+*.user
+console_app1/console_app1/obj/console_app1.csproj.nuget.dgspec.json
+*.props
+console_app1/console_app1/obj/console_app1.csproj.nuget.g.targets
+console_app1/console_app1/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+console_app1/console_app1/obj/Debug/netcoreapp3.1/console_app1.AssemblyInfo.cs
+console_app1/console_app1/obj/Debug/netcoreapp3.1/console_app1.AssemblyInfoInputs.cache
+console_app1/console_app1/obj/Debug/netcoreapp3.1/console_app1.assets.cache
+console_app1/console_app1/obj/Debug/netcoreapp3.1/console_app1.csproj.AssemblyReference.cache
+console_app1/console_app1/obj/project.assets.json
+console_app1/console_app1/obj/project.nuget.cache
+console_app1/console_app1/Program.cs
+out/Table 1-v2.docx
+out/Table 1-v3.docx
+out/Table 1-v4.docx
+draft/Blog-v2.docx

@@ -6,23 +6,15 @@ import os
 
 import pandas as pd
 import numpy as np
-from pathlib import Path
-
-# %%
-code_folder = Path(os.path.abspath(''))
-print(code_folder)
-project_dir = os.path.dirname(code_folder)
-os.chdir(project_dir)
-print(project_dir)
 
 # %%
 # Read in the dataset
-fname = 'data/all-vars.pkl'
+fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-vars.pkl'
 # Read in data for total net family income 
-fname2 = 'data/TNFI_TRUNC_79.csv'
+fname2 = 'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/TNFI_TRUNC_79.csv'
 if not os.path.exists(fname):
      cwd = os.getcwd()
-     os.chdir('data/')
+     os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/')
  
      os.chdir(cwd)
 
@@ -65,6 +57,31 @@ def get_dataset():
             return 'fourth quartile'
 
     OBS_DATASET['FAMILY_INCOME_QUARTILE'] = OBS_DATASET['TNFI_TRUNC'].apply(func)
+
+    # Construct categorical education variable
+    def func(y):
+        if y < 1:
+            return 'less than hs'
+        elif y == 1:
+            return 'hs'
+        elif y == 2:
+            return 'assoc'
+        elif 3 <= y <= 4:
+            return 'college'
+        elif 5 <= y <= 7:
+            return 'beyond'
+
+    OBS_DATASET['EDU_CATEGORY'] = OBS_DATASET['HIGHEST_DEGREE_RECEIVED'].apply(func)
+
+    # Construct categorical parental education variables 
+    def func(z):
+        if z <= 11:
+            return 'Less than HS'
+        elif z >= 12:
+            return 'HS or more'
+    
+    OBS_DATASET['MOTHER_EDU'] = OBS_DATASET['HIGHEST_GRADE_COMPLETED_MOTHER'].apply(func)
+    OBS_DATASET['FATHER_EDU'] = OBS_DATASET['HIGHEST_GRADE_COMPLETED_FATHER'].apply(func)
 
     return OBS_DATASET
 # %%

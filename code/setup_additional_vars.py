@@ -1,4 +1,3 @@
-# %%
 """ This module creates or modifies some variables for analysis.
 """
 # %%

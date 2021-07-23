@@ -12,7 +12,7 @@ from setup_fin_dataset import get_dataset
 
 # %%
 os.getcwd() 
-os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/out')
+os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/out')
 
 # %%
 def set_formatter(ax):

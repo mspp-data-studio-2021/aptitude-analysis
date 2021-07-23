@@ -11,21 +11,10 @@ version of the NLSY79.
 
 # %%
 # Import necessary packages 
-import os
 import pandas as pd
 import numpy as np
 import shlex
-from pathlib import Path
 from numpy.testing import assert_equal
-
-
-# %% 
-# Set directory path 
-code_folder = Path(os.path.abspath(''))
-print(code_folder)
-project_dir = os.path.dirname(code_folder)
-os.chdir(project_dir)
-print(project_dir)
 
 
 # %%
@@ -58,7 +47,7 @@ def get_name(substrings):
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
+    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -82,7 +71,7 @@ def get_year_name(substrings):
         substrings = [substrings]
 
     container = dict()
-    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
+    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -203,7 +192,7 @@ def process_multiple_each_year():
     dct_multiple = dict()
 
     # A mapping between continuous weeks and the calendar year is provided on the NLSY website.
-    mapping_continuous_week = pd.read_pickle('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/continuous_week_crosswalk_2012.pkl')
+    mapping_continuous_week = pd.read_pickle('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/continuous_week_crosswalk_2012.pkl')
     years = mapping_continuous_week['Week Start: \nYear'].unique()
 
     # Prepare container
@@ -342,7 +331,7 @@ def process_highest_degree_received():
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-variables.sdf', 'r') as infile:
+        with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
@@ -399,3 +388,5 @@ def cleaning_highest_grade_attended(df):
     df.loc[cond, 'HIGHEST_GRADE_ATTENDED'] = np.nan
 
     return df
+
+# %%

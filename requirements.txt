@@ -6,6 +6,8 @@ numpy
 os
 pandas 
 seaborn
-shlex 
-subprocess
+ushlex 
 pathlib
+scikit learn
+statsmodels
+dataprep
