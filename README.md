@@ -26,7 +26,7 @@ The NLSY79 is a nationally representative sample of 12,686 young men and women b
     - (2) setup_additional_vars.py (*processes some additional variables for further analysis*) 
     - (3) setup_classobj.py (*sets up organization of dataset as a class object*)
     - (4) setup_fin_dataset.py (*builds out the dataset which can be used across plots/analysis*)
-    Other code files, which can be run in any order:
+ - Other code files, which can be run in any order:
     - plots_dataset_overview.py (*includes plots for some overview of the NLSY79*)
     - plots_exploratory.py (*includes plots for aptitude / attitude scores by socioeconomic and demographic characteristics*)
     - plots_apt_att_measures.py (*includes plots for basic relationship between aptitude/attitude & hourly wages*)
