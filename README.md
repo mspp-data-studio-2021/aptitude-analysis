@@ -1,5 +1,5 @@
 # aptitude-analysis
-Author: Carolyn D. Gorman | NYU Robert F. Wagner Graduate School of Public Service | July 2021
+Carolyn D. Gorman | NYU Robert F. Wagner Graduate School of Public Service | July 2021
 
 ## Project Summary 
 Question: What is the relationship between early adulthood measures of aptitude and attitudes and later life labor market outcomes (namely wages)?
