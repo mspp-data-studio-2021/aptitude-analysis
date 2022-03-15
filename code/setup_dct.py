@@ -1,11 +1,9 @@
 # %%
 ## Set-up Dictionary
-"""This module processes the Short Description File downloaded along with the raw data
+"""This file processes the Short Description File downloaded along with the raw data
 from the NLS Investigator to get yearly variable (survey question) names. Variables are 
 named with a reference number that is non-descriptive of the variable and is different 
-for the same variable in different years. I draw code for this module from 
-https://github.com/HumanCapitalAnalysis/nlsy-data. These contributors maintain a cleaned 
-version of the NLSY79.
+for the same question in different years.
 """
 
 
@@ -20,9 +18,9 @@ from numpy.testing import assert_equal
 # %%
 def get_mappings():
     """Map variables by separate cases: for variables that vary by year, and 
-    for variables where there are multiple realizations each year. 
+    for variables where there are multiple values each year. 
     """
-    # Set up grid for survey years. Start with 1978 as information about 1978 
+    # Set up a grid for survey years. Start with 1978; information about 1978 
     # employment histories is collected with the initial interview. Note that
     # from 1996 on, the NLSY is generated every other year.  
     years = range(1978, 2013)
@@ -47,13 +45,13 @@ def get_name(substrings):
     if type(substrings) == str:
         substrings = [substrings]
 
-    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
+    with open(r'data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
             if not is_relevant:
                 continue
-            # This special treatment is only required for the string that identifies RACE.
+            # For the string that identifies RACE.
             line = line.replace("'", '')
             list_ = shlex.split(line)
             name = list_[0].replace('.', '')
@@ -71,7 +69,7 @@ def get_year_name(substrings):
         substrings = [substrings]
 
     container = dict()
-    with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
+    with open(r'data/all-variables.sdf', 'r') as infile:
         for line in infile.readlines():
             is_relevant = [substring in line for substring in substrings]
             is_relevant = np.all(is_relevant)
@@ -186,16 +184,14 @@ def process_time_constant(years):
 
 # %%
 def process_multiple_each_year():
-    """Process variables with multiple realizations each year--
-    specifically, employment status for multiple weeks.
+    """Process variables for employment status, with values for multiple weeks.
     """
     dct_multiple = dict()
 
-    # A mapping between continuous weeks and the calendar year is provided on the NLSY website.
-    mapping_continuous_week = pd.read_pickle('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/continuous_week_crosswalk_2012.pkl')
+    # NLSY provides mapping between continuous weeks and the calendar year.
+    mapping_continuous_week = pd.read_pickle('data/continuous_week_crosswalk_2012.pkl')
     years = mapping_continuous_week['Week Start: \nYear'].unique()
 
-    # Prepare container
     year_weeks = dict()
     for year in years:
         year_weeks[year] = []
@@ -204,7 +200,7 @@ def process_multiple_each_year():
         year = row['Week Start: \nYear']
         year_weeks[year] += [row['Continuous \nWeek Number']]
 
-    # Process employment information for some selected weeks.
+    # Get employment information for some selected weeks.
     weeks = [1, 7, 13, 14, 20, 26, 40, 46, 52]
 
     for type_ in ['STATUS', 'HOURS']:
@@ -226,9 +222,9 @@ def process_multiple_each_year():
 
 # %%
 def process_single_each_year():
-    """Process variables that vary by year (i.e. one variable measured each year).
+    """Process variables measured once each year.
     """
-    # Initialize containers
+    
     dct = dict()
 
     ''' EDUCATION
@@ -249,7 +245,7 @@ def process_single_each_year():
     dct['MONTH_OF_BIRTH'] = get_year_name(substrings)
     
 
-    ''' OCCUPATION INFORMATION 
+    ''' OCCUPATION VARIABLES 
     '''
     # CPSOCC70
     substrings = 'OCCUPATION AT CURRENT JOB/MOST RECENT JOB (70 CENSUS 3 DIGIT)'
@@ -260,13 +256,12 @@ def process_single_each_year():
         substrings = ['OCCUPATION (CENSUS 3 DIGIT, 70 CODES)', 'JOB #0' + str(i)]
         dct['OCCALL70_JOB_' + str(i)] = get_year_name(substrings)
 
-    # In the year 1993, the substring is changed and cannot be easily be
-    # distinguished from the CPSOCC70 variable.
+    # In 1993, the substring is changed and can't be easily distinguished from CPSOCC70
     for i in range(2, 6):
         substrings = 'OCCUPATION (CENSUS 3 DIGIT) JOB #0' + str(i)
         dct['OCCALL70_JOB_' + str(i)].update(get_year_name(substrings))
 
-    # In the year 1982, the substring for the fourth job contains a 0 instead of an O.
+    # In 1982, the substring for the fourth job contains a 0 instead of an O.
     substrings = ['OCCUPATION (CENSUS 3 DIGIT, 70 C0DES)', 'JOB #04']
     dct['OCCALL70_JOB_4'].update(get_year_name(substrings))
 
@@ -278,7 +273,7 @@ def process_single_each_year():
 
     '''INCOME AND WAGES 
     '''
-    # HOURLY RATE OF PAY JOB ##
+    # HOURLY RATE OF PAY JOB 
     for i in range(1, 6):
         substrings = ['HOURLY RATE OF PAY JOB #0' + str(i)]
         dct['WAGE_HOURLY_JOB_' + str(i)] = get_year_name(substrings)
@@ -324,14 +319,13 @@ def process_single_each_year():
 
 # %%
 def process_highest_degree_received():
-    '''This function processes information on the highest degree ever received. There are
-    two different variables in some years with the same information.
+    '''This function selects the highest degree ever received by a respondent.
     '''
-    # This method reads in the variable names for the highest grade received.
+    # Read in the variable names for highest grade received.
     def read_highest_degree_received():
         
         rslt = dict()
-        with open(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.sdf', 'r') as infile:
+        with open(r'data/all-variables.sdf', 'r') as infile:
             for line in infile.readlines():
                 is_relevant = 'HIGHEST DEGREE EVER RECEIVED' in line
 
@@ -365,12 +359,11 @@ def process_highest_degree_received():
 
 # %%
 def aggregate_highest_degree_received(df):
-    """ This function merges the information about the highest degree ever received.
+    """ Merge the information about the highest degree ever received.
     """
     label = 'HIGHEST_DEGREE_RECEIVED'
 
-    # This assignment rule simply takes the first assignment and then tries to replace it with
-    # the second if the first is a missing value.
+    # Take the first assignment and, if missing, take the second.
     df[label] = df['HIGHEST_DEGREE_RECEIVED_1']
 
     cond = df[label].isnull()
@@ -381,12 +374,10 @@ def aggregate_highest_degree_received(df):
 
 # %%
 def cleaning_highest_grade_attended(df):
-    """ The variable for highest grade attended contains a value 95 
-    which corresponds to UNGRADED.
+    """ A value of 95 corresponds to UNGRADED.
     """
     cond = df['HIGHEST_GRADE_ATTENDED'] == 95
     df.loc[cond, 'HIGHEST_GRADE_ATTENDED'] = np.nan
 
     return df
 
-# %%
