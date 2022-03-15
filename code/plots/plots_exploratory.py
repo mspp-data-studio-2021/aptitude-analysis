@@ -1,4 +1,5 @@
-"""This script creates some informative graphs on subgroups of income quartile, gender, and race."""
+"""This file creates some informative graphs on subgroups of income quartile, gender, and race."""
+
 # %%
 import os
 import matplotlib.pyplot as plt
