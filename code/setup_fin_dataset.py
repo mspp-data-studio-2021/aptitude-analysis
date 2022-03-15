@@ -1,5 +1,6 @@
-"""This module adds Total Net Family Income (TNFI) in 1979 to create income quartiles 
+"""This file adds Total Net Family Income (TNFI) in 1979 to create income quartiles 
 used in plots and analysis."""
+
 # %%
 # Import necessary packages
 import os
@@ -9,12 +10,12 @@ import numpy as np
 
 # %%
 # Read in the dataset
-fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/data/all-vars.pkl'
+fname = 'data/all-vars.pkl'
 # Read in data for total net family income 
-fname2 = 'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/TNFI_TRUNC_79.csv'
+fname2 = 'data/TNFI_TRUNC_79.csv'
 if not os.path.exists(fname):
      cwd = os.getcwd()
-     os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/')
+     os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/')
  
      os.chdir(cwd)
 
@@ -84,4 +85,4 @@ def get_dataset():
     OBS_DATASET['FATHER_EDU'] = OBS_DATASET['HIGHEST_GRADE_COMPLETED_FATHER'].apply(func)
 
     return OBS_DATASET
-# %%
+
