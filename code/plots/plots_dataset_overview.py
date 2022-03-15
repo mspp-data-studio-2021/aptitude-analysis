@@ -1,4 +1,4 @@
-"""This module creates some basic figures describing the dataset."""
+"""This file creates some basic figures describing the dataset."""
 # %%
 import os
 from matplotlib import font_manager 
@@ -10,9 +10,6 @@ from mpl_toolkits.axisartist.axislines import Subplot
 from setup_fin_dataset import SURVEY_YEARS
 from setup_fin_dataset import get_dataset
 
-# %%
-os.getcwd() 
-os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/out')
 
 # %%
 def set_formatter(ax):
