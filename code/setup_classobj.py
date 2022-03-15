@@ -15,7 +15,7 @@ from setup_additional_vars import calculate_afqt_scores
 from setup_additional_vars import create_is_interviewed
 
 # %%
-# This list contains all variables that are processed for the panel, checked via testing.
+# This list contains all variables processed for the panel, checked via testing.
 TIME_CONSTANT = []
 TIME_CONSTANT += ['IDENTIFIER', 'RACE', 'GENDER']
 TIME_CONSTANT += ['ASVAB_ARITHMETIC_REASONING', 'ASVAB_WORD_KNOWLEDGE', 'ASVAB_ALTERED_TESTING']
@@ -42,7 +42,7 @@ for start in ['WAGE_HOURLY_JOB_', 'CPS_JOB_INDICATOR_JOB_', 'OCCALL70_JOB_']:
         TIME_VARYING += [start + job]
 
 # %%
-# These variables are created during processing and are part of a separate list, as they're
+# These variables are created during processing and are part of a separate list, 
 # not available when the data is transformed from wide to long format.
 DERIVED_VARS = []
 DERIVED_VARS += ['AFQT_RAW', 'IS_INTERVIEWED', 'HIGHEST_DEGREE_RECEIVED']
@@ -53,7 +53,7 @@ for start in ['OCCALL70_MOD_JOB_']:
 
 # %%
 class SourceCls(object):
-    """ This class contains all methods that prepare the source dataset for further uses.
+    """ This class has methods that prepare the source dataset for further uses.
     """
     def __init__(self):
 
@@ -66,18 +66,15 @@ class SourceCls(object):
     def read_source(self, num_agents=None):
         """ Read the original file from the NLSY INVESTIGATOR.
         """
-        # Read from original data from CSV file
-        self.source_wide = pd.read_csv(r'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-variables.csv', nrows=num_agents)
-
-        # Process variable dictionary
+        self.source_wide = pd.read_csv(r'data/all-variables.csv', nrows=num_agents)
+        
         survey_years, dct = get_mappings()
 
-        # Attach results as class attributes
         self.survey_years = survey_years
         self.dct = dct
 
     def add_basic_variables(self):
-        """ Add some basic variables that are constructed from the original information.
+        """ Add basic variables constructed from the original data.
         """
         # Distribute class attributes
         source_long = self.source_long
@@ -88,7 +85,7 @@ class SourceCls(object):
         # Compute the AFQT score 
         source_long = calculate_afqt_scores(source_long)
 
-        # There are no missing values for these variables, so integer type can be enforced.
+        # There are no missing values for these variables, so set as integer data type.
         for varname in ['MONTH_OF_BIRTH', 'YEAR_OF_BIRTH']:
             source_long[varname] = source_long[varname].astype('int64')
 
@@ -112,19 +109,19 @@ class SourceCls(object):
         self._set_missing_values()
 
     def _set_missing_values(self):
-        """ This method ensures a uniform treatment of missing values.
+        """ This ensures a uniform treatment of missing values.
         """
         # Distribute class attributes
         source_long = self.source_long
 
-        # In the original dataset missing values are indicated by negative values
+        # In the original dataset, missing values are indicated by negative values
         for varname in TIME_VARYING + TIME_CONSTANT:
             cond = source_long[varname] < 0
             if np.sum(cond) > 0:
                 source_long.loc[cond, varname] = np.nan
 
     def testing(self):
-        """ This method performs some basic consistency checks for the constructed panel.
+        """ This performs some basic consistency checks for the constructed panel.
         """
         # Distribute class attributes
         source_long = self.source_long
@@ -136,8 +133,8 @@ class SourceCls(object):
         for varname in varnames:
             np.testing.assert_equal(source_long[varname].notnull().all(), True)
     
-        # The same is true for the all EMP_STATUS_ variables. There is one individual
-        # whom does in fact have missing values in their employment status; drop them.
+        # The same is true for the all EMP_STATUS_ variables. There is one record that
+        # does in fact have missing values in employment status; drop the respondent.
         subset = source_long.drop(9269, level='Identifier')
         np.testing.assert_equal(subset.filter(regex='EMP_STATUS_*').notnull().all().all(), True)
 
@@ -267,7 +264,7 @@ class SourceCls(object):
             args, rslt = case
             np.testing.assert_almost_equal(rslt, wage_hourly_counts(*args))
 
-        # Confirm all included variables are mentioned at the beginning of the module.
+        # Confirm all included variables are mentioned at the beginning of the file.
         varnames = TIME_CONSTANT + TIME_VARYING + DERIVED_VARS
         np.testing.assert_equal(set(source_long.columns.values), set(varnames))
 
@@ -312,7 +309,7 @@ def wide_to_long(source_wide, additional_level, dct):
             # Assign the variable name to the corresponding year.
             pd_long.loc[(slice(None), year), long_name] = source_wide[dct[long_name][year]].values
 
-    # Some variables do not have any missing values, so integer type can be imposed.
+    # Some variables do not have any missing values, so they can be made integer data type.
     for varname in ['IDENTIFIER', 'SURVEY_YEAR', 'RACE', 'GENDER']:
         pd_long[varname] = pd_long[varname].astype('int64')
 
@@ -344,7 +341,7 @@ def occall_counts(year, num, source_long):
 
 # %%
 def wage_hourly_counts(year, num, source_long):
-    """ This function returns counts for each of the bins of the variable.
+    """ This function returns counts for each of the bins of the variable WAGE_HOURLY_JOB_.
     """
     bins = []
     bins += [(0, 1), (1, 99), (100, 199), (200, 299), (300, 399), (400, 499), (500, 599)]
@@ -356,7 +353,7 @@ def wage_hourly_counts(year, num, source_long):
 
 # %%
 def emp_hours_counts(year, week, source_long):
-    """ This function returns counts for each of the bins of the variable EMP_HOURS.
+    """ This function returns counts for each of the bins of the variable EMP_HOURS_WK_.
     """
     bins = []
     bins += [(0, 0), (1, 9), (10, 19), (20, 29), (30, 39), (40, 49), (50, 59), (60, 69)]
@@ -370,7 +367,7 @@ def emp_hours_counts(year, week, source_long):
 
 # %%
 def emp_status_counts(year, week, source_long):
-    """ This function returns counts for each of the bins of the variable EMP_STATUS.
+    """ This function returns counts for each of the bins of the variable EMP_STATUS_WK.
     """
     bins = []
     bins += [(100, np.inf), (0, 0), (2, 2), (3, 3), (4, 4), (5, 5), (7, 7)]
@@ -392,10 +389,10 @@ def _get_counts_year(series, bins, year):
 
 
 # %%
-# Save the object as a pkl file for further analysis
+# Save the object as a pkl file for further analysis.
 if __name__ == '__main__':
 
-    fname = 'C:/Users/bec10/OneDrive/Desktop/files/repos/aptitude-analysis/data/all-vars.pkl'
+    fname = 'data/all-vars.pkl'
 
     source_obj = SourceCls()
 
@@ -408,4 +405,3 @@ if __name__ == '__main__':
     source_obj.testing()
 
 
-# %%
