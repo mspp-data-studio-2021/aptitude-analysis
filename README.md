@@ -2,7 +2,7 @@
 Author: Carolyn D. Gorman | NYU Robert F. Wagner Graduate School of Public Service | July 2021
 
 ## Project Summary 
-Question: What is the relationship between early adulthood measures of aptitude and attitudes and later life labor market outcomes?
+Question: What is the relationship between early adulthood measures of aptitude and attitudes and later life labor market outcomes (namely wages)?
 
 Using data from the National Longitudinal Survey of Youth 1979 (NLSY79), I prepare a preliminary examination of how indicators of aptitude and attitudes during respondents' early adulthood are related to later life labor market outcomes, here, focused on hourly wages.
 
@@ -31,8 +31,6 @@ The NLSY79 is a nationally representative sample of 12,686 young men and women b
     - plots_apt_att_measures.py (*includes plots for basic relationship between aptitude/attitude & hourly wages*)
     - plots_apt_att_gender.py (*includes plots for basic relationship between aptitude/attitude and later life hourly wage*)
     - exploratory_analysis.py (*includes code to create Table 1 in the blog post*)
-    - regression_analysis.py (*incomplete--for continuuing work*)
-
 
 
 ### Attributions 
