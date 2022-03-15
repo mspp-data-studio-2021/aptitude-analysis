@@ -1,5 +1,6 @@
-""" This module creates or modifies some variables for analysis.
+""" This file creates and modifies some variables for analysis.
 """
+
 # %%
 import numpy as np
 from numpy.testing import assert_equal
@@ -7,8 +8,8 @@ from numpy.testing import assert_equal
 
 # %%
 def create_is_interviewed(df):
-    """This function creates an indicator evaluated TRUE if an individual was interviewed
-    that year based on the information about the reasons for non-interviews. 
+    """This function creates an indicator for whether an individual was interviewed
+    that year based on recorded reasons for non-interviews. 
     """
     df['IS_INTERVIEWED'] = df['REASON_NONINTERVIEW'].fillna(0) == 0
 
@@ -19,26 +20,23 @@ def create_is_interviewed(df):
 
 # %%
 def standarize_employer_information(df):
-    """ This function merges the employer-specific information on an individual's occupation
-    into a new variable using the CPS70 codes. See additional information at:
+    """ This function creates a new variable for employer-specific information 
+    on an occupation using the CPS70 codes. See additional information at:
     https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/employment/jobs-employers
     """
-    # Create a set of new variables to signal to users that a modification took place.
     for i in range(1, 6):
         df['OCCALL70_MOD_JOB_' + str(i)] = df['OCCALL70_JOB_' + str(i)]
 
-    # The information on #1 is missing in 1979 and 1993 as it is identical with CPSOCC70.
+    # Information on job 1 is missing in 1979 and 1993 (it is identical with CPSOCC70).
     for year in [1979, 1993]:
         cond = df['SURVEY_YEAR'] == year
         df.loc[cond, 'OCCALL70_MOD_JOB_1'] = df.loc[cond, 'CPSOCC70']
 
-    # For the years 1980 - 1992 there is an indicator variable that maps the CPSOCC70 information
-    # to the OCCALL70 variable.
-    #
-    # NOTE: There are two open questions that are ignored here: (1) There exist two variables in
-    # 1990 that read ``INT CHECK - IS JOB #01 SAME AS CURRENT JOB?'' (R3340000, R3342400). The
-    # realizations of both variables are not identical. (2) There are a few individuals where
-    # the CPSOCC indicator takes a value of one for more than one of the 5 OCCALL70 variables. 
+    # Between 1980 - 1992 there is an indicator variable that maps the CPSOCC70 information
+    # to the OCCALL70 variable. NOTE: two open questions ignored here: (1) There are two 
+    # variables in 1990 ``INT CHECK - IS JOB #01 SAME AS CURRENT JOB?'' (R3340000, R3342400) 
+    # but the values don't match in every instance. (2) There are a few cases where
+    # the CPSOCC indicator takes a value of one for more than 1 of the 5 OCCALL70 variables. 
     for i in range(1, 6):
         cond = (df['CPS_JOB_INDICATOR_JOB_' + str(i)] == 1)
         df.loc[cond, 'OCCALL70_MOD_JOB_' + str(i)] = df.loc[cond, 'CPSOCC70']
@@ -49,7 +47,7 @@ def standarize_employer_information(df):
 def calculate_afqt_scores(df):
     """This function calculates the Aptitude, Achievement, and Intelligence (AFQT) scores, 
     with the Numerical Operations score adjusted along the lines described in NLSY Attachment 106. 
-    For more details, see information at: 
+    For more details, see: 
     https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/education/aptitude-achievement-intelligence-scores
     """
     df['NUMERICAL_ADJ'] = df['ASVAB_NUMERICAL_OPERATIONS']
@@ -71,11 +69,11 @@ def calculate_afqt_scores(df):
     del df['NUMERICAL_ADJ']
 
     # There are a couple of variables for which AFQT_RAW can be computed where there is no AFQT_1
-    # available. The variable AFQT_1 is set to NAN by the NLSY team if the test procedure was
-    # altered, i.e. if variable R06148 (ASVAB_ALTERED_TESTING) takes value 67. However, others have
-    # noticed that there are additional issues/considerations as well.
+    # available. The variable AFQT_1 is recorded as NAN by NLSY if the variable for the test procedure 
+    # having been altered -- R06148 (ASVAB_ALTERED_TESTING) -- has a value of 67. The meaning/def
+    # of the below values for the variable is not available, but I follow NLSY and do not change to NAN.  
     #
-    #   PROFILES, ASVAB VOCATIONAL TEST - NORMAL/ALTERED TESTING
+    #   ASVAB VOCATIONAL TEST - NORMAL/ALTERED TESTING
     #
     #       11625   51      COMPLETED
     #          41   52      COMP-CONVERTED REFUSAL
@@ -83,33 +81,29 @@ def calculate_afqt_scores(df):
     #          85   54      COMP-SPANISH INSTR. CARDS
     #          36   67      COMP-PRODECURES ALTERED
     #
-    # NLSY staff, on guidance for how to deal with 51, 52, 53, and 54, essentially stated that detailed 
-    # information is not available anymore on the meaning of the different realizations. 
-    # This code chooses to follow the original decision of the NLSY staff to only set 67 to NAN.
     cond = df['ASVAB_ALTERED_TESTING'].isin([67])
     df.loc[cond, 'AFQT_RAW'] = np.nan
 
-    # Unit test; reconstruct the AFQT_1 variable from the inputs.
+    # Test; reconstruct the AFQT_1 variable from the inputs.
     assert_equal(_test_afqt(df), True)
 
     return df
 
 # %%
 def aggregate_birth_information(df):
-    """ This function aggregates the birth information that was collected in 1979 and 1981. See
+    """ This function aggregates age information that was collected in 1979 and 1981. See
     https://www.nlsinfo.org/content/cohorts/nlsy79/topical-guide/household/age for more details
     """
     def _construct_birth_info(agent):
-        """ This method constructs the correct birth variable for each respondent.
+        """ Construct the correct birth variable for each respondent.
         """
         # Store the original information for now for debugging and testing purposes.
         for substring in ['YEAR_OF_BIRTH', 'MONTH_OF_BIRTH']:
             for year in [1979, 1981]:
                 agent[substring + '_' + str(year)] = agent[substring][:, year].values[0]
-            # Start with a clean slate and always prefer the information from 1981
+            # Use information from 1981 unless unavailable.
             agent[substring] = np.nan
             agent[substring] = agent[substring + '_1981']
-            # If no information in 1981 is available, fall back to 1979.
             if agent[substring].isnull().values.any():
                 agent[substring] = agent[substring + '_1979']
 
@@ -117,17 +111,17 @@ def aggregate_birth_information(df):
 
     df = df.groupby('IDENTIFIER').apply(_construct_birth_info)
 
-    # Apply some basic tests to ensure that the computation was correct.
+    # Apply some basic tests to confirm that the computation was correct.
     for substring in ['YEAR_OF_BIRTH', 'MONTH_OF_BIRTH']:
-        # There cannot be any missing values in the birth variables.
+        # There can't be any missing values in the birth variables.
         assert not df[substring].isnull().any()
-        # Whenever there is not a missing value in for 1981 then the columns should be identical.
-        # For the others it should be identical to 1979.
+        # Columns should be identical when the values for 1981 are not null.
+        # Otherwise they should be identical to 1979.
         cond = (df[substring + '_1981'].notnull())
         assert df.loc[cond, substring].equals(df.loc[cond, substring + '_1981'])
         assert df.loc[~cond, substring].equals(df.loc[~cond, substring + '_1979'])
 
-    # There's no need to keep track of the intermediate variables.
+    # Delete the other variables for birth month/year, now not needed.
     for substring in ['YEAR_OF_BIRTH', 'MONTH_OF_BIRTH']:
         for year in [1979, 1981]:
             del df[substring + '_' + str(year)]
@@ -141,7 +135,6 @@ def _test_afqt(df):
     """ NLSY provides percentile information for AFQT scores, reconstructed here 
     as a check based on NLSY instructions.
     """
-    # Breaking the logic of the code a bit, copies of the object are drawn from here.
     df_internal = df.copy(deep=True)
 
     # Adjust for missing values here, even though this is also done later in the code
