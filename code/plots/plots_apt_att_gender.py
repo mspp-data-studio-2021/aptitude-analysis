@@ -1,4 +1,4 @@
-"""This module creates figures that illustrate some basic relationships between hourly wages
+"""This file creates figures that illustrate some basic relationships between hourly wages
  and aptitude / attitude by gender."""
 # %%
 import os
@@ -11,7 +11,7 @@ from setup_fin_dataset import get_dataset
 
 # %%
 # change working directory to a separate folder for plots
-os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/out/heatmaps')
+os.chdir('out/heatmaps')
 
 # %%
 # Pull in the data
