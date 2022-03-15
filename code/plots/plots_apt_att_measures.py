@@ -1,6 +1,7 @@
 
-"""This module creates figures that illustrate some basic relationships between labor market
-outcomes (hourly wages) and aptitude / attitude."""
+"""This file creates figures that illustrate some basic relationships between 
+hourly wages and aptitude / attitude."""
+
 # %%
 import os
 import matplotlib.pyplot as plt
@@ -9,14 +10,6 @@ import pandas as pd
 import numpy as np
 
 from setup_fin_dataset import get_dataset
-
-# %%
-# Confirm the working directory
-os.getcwd()
-
-# %%
-# change working directory to a separate folder for plots
-os.chdir('C:/Users/bec10/OneDrive/Desktop/files/repos/gorman-earlyjobskills-analysis/out/heatmaps')
 
 # %%
 # Pull in the data
