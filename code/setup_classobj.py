@@ -1,5 +1,5 @@
 # %%
-"""This module creates a class object for the data."""
+"""This file creates a class object for the data."""
 
 # %%
 import pandas as pd
